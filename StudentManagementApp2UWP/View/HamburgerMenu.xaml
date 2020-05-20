@@ -1,0 +1,56 @@
+﻿<Page
+    x:Class="StudentManagementApp2UWP.View.HamburgerMenu"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:StudentManagementApp2UWP.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="160"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Background" Value="Transparent"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <SplitView
+            x:Name="SplitView"
+            DisplayMode="Inline"
+            IsPaneOpen="True"
+            VerticalAlignment="Stretch"
+            OpenPaneLength="160"
+            PaneBackground="#FFFFF387"
+            Foreground="Black">
+            <SplitView.Pane>
+                <StackPanel>
+                    <Button Name="CampusesButton" Style="{StaticResource ButtonStyle}" HorizontalContentAlignment="Left" Click="CampusesButton_Click" FontWeight="Normal">
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Street"/>
+                            <TextBlock Margin="19,0" VerticalAlignment="Center" Text="Campuses"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Name="ProgrammesButton" Style="{StaticResource ButtonStyle}" HorizontalContentAlignment="Left" Click="ProgrammesButton_Click" FontWeight="Normal">
+                        <StackPanel Orientation="Horizontal">
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE82D;"/>
+                            <TextBlock Margin="19,0" VerticalAlignment="Center" Text="Programmes"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Name="StudentsButton" Style="{StaticResource ButtonStyle}" HorizontalContentAlignment="Left" Click="StudentsButton_Click" FontWeight="Normal">
+                        <StackPanel Orientation="Horizontal">
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE716;"/>
+                            <TextBlock Margin="19,0" VerticalAlignment="Center" Text="Students"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </SplitView.Pane>
+
+            <SplitView.Content>
+                <Frame Name="ContentFrame"/>
+            </SplitView.Content>
+        </SplitView>
+    </Grid>
+</Page>

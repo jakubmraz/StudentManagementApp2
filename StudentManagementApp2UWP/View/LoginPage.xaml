@@ -1,0 +1,42 @@
+﻿<Page
+    x:Class="StudentManagementApp2UWP.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:StudentManagementApp2UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="using:StudentManagementApp2UWP.ViewModel"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <viewModel:RegistrationViewModel/>
+    </Page.DataContext>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="299*"></ColumnDefinition>
+            <ColumnDefinition Width="201*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <!-- Left box Zealand logo -->
+        <StackPanel Margin="-71,0,0,0">
+            <StackPanel.Background>
+                <ImageBrush  ImageSource="/Assets/ZealandLogo.png"/>
+            </StackPanel.Background>
+        </StackPanel>
+        <TextBlock Text="Student Management System" Grid.Column="0" Grid.ColumnSpan="2" TextAlignment="Center" Padding="0 40" FontSize="52"></TextBlock>
+
+        <!-- LOGIN Content white box-->
+        <StackPanel Height="319" Width="300" Grid.Column="1" Padding=" 15 0">
+            <TextBlock Text="Login" Foreground="Black" FontSize="25" HorizontalAlignment="Center"/>
+            <TextBlock Text="Username" Margin="0 5"/>
+            <TextBox x:Name="Username" Text="{Binding Username, Mode=TwoWay}" Background="#545d6a" Foreground="white" FontSize="18"/>
+            <TextBlock Text="Password" Margin="0 5"/>
+            <PasswordBox  Background="#545d6a" Foreground="white" FontSize="18"      Password="{Binding Path=Password, Mode=TwoWay}"/>
+
+            <Button  x:Name="LoginButton" Margin="80 10" HorizontalAlignment="Center" Background="#545d6a" Foreground="white" FontSize="18" Click="LoginButton_Click" >Log in</Button>
+        </StackPanel>
+        <TextBlock Text="If you Forgot your password, please contact IT department." Grid.Column="1" TextAlignment="Center" Margin="0 750 0 0"/>
+    </Grid>
+</Page>

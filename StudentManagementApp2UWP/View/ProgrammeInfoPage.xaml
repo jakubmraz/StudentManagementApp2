@@ -1,0 +1,96 @@
+﻿<Page
+    x:Class="StudentManagementApp2UWP.View.ProgrammeInfoPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:StudentManagementApp2UWP.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:common="using:StudentManagementApp2UWP.Common"
+    xmlns:viewModel="using:StudentManagementApp2UWP.ViewModel"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <viewModel:ProgrammeInfoViewModel/>
+    </Page.DataContext>
+
+    <Page.Resources>
+        <common:DateFormatConverter x:Name="DateToStringFormatConverter"/>
+        <common:DateFormatConverterMonthYear x:Name="DateFormatConverterMonthYear"/>
+        <Style x:Key="TextStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="30"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <StackPanel Margin="40,40,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Style="{StaticResource TextStyle}" Text="Name:"/>
+                <TextBlock Margin="20,0,0,0" Style="{StaticResource TextStyle}" Text="{Binding ThisProgramme.Name}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Style="{StaticResource TextStyle}" Text="Begins:"/>
+                <TextBlock Margin="20,0,0,0" Style="{StaticResource TextStyle}" Text="{Binding ThisProgramme.Year_Of_Beginning, Converter={StaticResource DateFormatConverterMonthYear}}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Style="{StaticResource TextStyle}" Text="Ends:"/>
+                <TextBlock Margin="20,0,0,0"  Style="{StaticResource TextStyle}" Text="{Binding ThisProgramme.Year_Of_End, Converter={StaticResource DateFormatConverterMonthYear}}"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Margin="600,40,0,0" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Style="{StaticResource TextStyle}" Text="Campus:"/>
+                <TextBlock Margin="20,0,0,0"  Style="{StaticResource TextStyle}" Text="Roskilde"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Margin="40,200,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Style="{StaticResource TextStyle}" Text="Teachers:"/>
+                <TextBlock Margin="20,0,0,0"  Style="{StaticResource TextStyle}" Text="Hans Hansen"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Style="{StaticResource TextStyle}" Text="Subjects:"/>
+                <TextBlock Margin="20,0,0,0"  Style="{StaticResource TextStyle}" Text="Money 101, Capitalism Theory, Yacht Shopping"/>
+            </StackPanel>
+        </StackPanel>
+        <ListView Margin="40,320,60,120" Background="#FFFFF387" ItemsSource="{Binding Students, Mode=TwoWay}" IsEnabled="{Binding ListEnabled}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel BorderBrush="Black" BorderThickness="1" Orientation="Horizontal" Margin="0,0,0,0">
+                        <TextBlock Text="{Binding Name}" FontSize="30" Width="200" Margin="10,0,0,0"/>
+                        <TextBlock Text="{Binding Email}" FontSize="30" Width="200"/>
+                        <TextBlock Text="{Binding Background}" FontSize="30" Width="200"/>
+                        <TextBlock Text="Active" FontSize="30" Width="120"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="40,0,0,20" Content="Add Student" FontSize="30" Background="#FFFFF387" Command="{Binding OpenPopupCommand}"/>
+        <Popup Margin="200,200,200,200" IsOpen="{Binding PopupOpen}" Height="700" Width="1400">
+            <Border Background="#FFFFF387" BorderBrush="Black" BorderThickness="2">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <Button Background="Transparent" Command="{Binding ClosePopupCommand}">
+                            <SymbolIcon Symbol="Back"/>
+                        </Button>
+                        <TextBlock Margin="10,0,0,0" Text="Select a student to add:" FontSize="30"/>
+                    </StackPanel>
+
+                    <ListView Background="#FFFFF387" ItemsSource="{Binding AllStudents}" SelectedItem="{Binding SelectedStudent}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel BorderBrush="Black" BorderThickness="1" Orientation="Horizontal" Margin="0,0,0,0">
+                                    <TextBlock Text="{Binding Name}" FontSize="30" Width="200" Margin="10,0,0,0"/>
+                                    <TextBlock Text="{Binding Email}" FontSize="30" Width="200"/>
+                                    <TextBlock Text="{Binding Background}" FontSize="30" Width="200"/>
+                                    <TextBlock Text="Active" FontSize="30" Width="120"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Button Content="Add" FontSize="30" Command="{Binding AddStudentCommand}"/>
+                </StackPanel>
+            </Border>
+        </Popup>
+    </Grid>
+</Page>
