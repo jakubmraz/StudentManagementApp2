@@ -35,9 +35,17 @@ namespace StudentManagementApp2UWP.ViewModel
 
             _thisProgramme = StaticObjects.StaticSelectedProgramme;
             _students = ThisProgramme.TempStudents;
-            AllStudents = studentCatalog.Students;
+            //AllStudents = studentCatalog.Students;
 
-            OpenPopupCommand = new RelayCommand(OpenPopup);
+            AllStudents = new ObservableCollection<Student>()
+            {
+                new Student(00, "Mario", "", ""),
+                new Student(01, "Luigi", "",""),
+                new Student(02, "Wario", "", ""),
+                new Student(03, "Waluigi", "", "")
+            };
+
+        OpenPopupCommand = new RelayCommand(OpenPopup);
             ClosePopupCommand = new RelayCommand(ClosePopup);
             AddStudentCommand = new RelayCommand(AddStudentToProgramme);
 
@@ -108,6 +116,9 @@ namespace StudentManagementApp2UWP.ViewModel
 
             ProgrammeCatalogSingleton.Instance.Programmes.FirstOrDefault(data => data.Name == ThisProgramme.Name).TempStudents
                 .Add(SelectedStudent);
+            //ProgrammeCatalogSingleton.Instance.Programmes.Remove(ThisProgramme);
+            //ThisProgramme.TempStudents.Add(SelectedStudent);
+            //ProgrammeCatalogSingleton.Instance.Programmes.Add(ThisProgramme);
             ClosePopup();
             SelectedStudent = null;
             ThisProgramme = ThisProgramme; //To reload the page?
