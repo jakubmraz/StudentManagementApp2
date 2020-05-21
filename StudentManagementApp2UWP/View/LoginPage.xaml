@@ -9,9 +9,9 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Page.DataContext>
+    <!--<Page.DataContext>
         <viewModel:RegistrationViewModel/>
-    </Page.DataContext>
+    </Page.DataContext>-->
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -33,9 +33,9 @@
             <TextBlock Text="Username" Margin="0 5"/>
             <TextBox x:Name="Username" Text="{Binding Username, Mode=TwoWay}" Background="#545d6a" Foreground="white" FontSize="18"/>
             <TextBlock Text="Password" Margin="0 5"/>
-            <PasswordBox  Background="#545d6a" Foreground="white" FontSize="18"      Password="{Binding Path=Password, Mode=TwoWay}"/>
+            <PasswordBox  Background="#545d6a" Foreground="white" FontSize="18" Password="{Binding Path=Password, Mode=TwoWay}"/>
 
-            <Button  x:Name="LoginButton" Margin="80 10" HorizontalAlignment="Center" Background="#545d6a" Foreground="white" FontSize="18" Click="LoginButton_Click" >Log in</Button>
+            <Button  x:Name="LoginButton" Margin="80 10" HorizontalAlignment="Center" Background="#545d6a" Foreground="white" FontSize="18" Click="LoginButton_Click">Log in</Button>
         </StackPanel>
         <TextBlock Text="If you Forgot your password, please contact IT department." Grid.Column="1" TextAlignment="Center" Margin="0 750 0 0"/>
     </Grid>

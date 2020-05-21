@@ -78,7 +78,6 @@ namespace StudentManagementApp2UWP.ViewModel
             {
                 _searchByName = value;
                 OnPropertyChanged(nameof(FilteredStudents));
-
             }
         }
 
@@ -90,7 +89,7 @@ namespace StudentManagementApp2UWP.ViewModel
                 foreach (var st in studentCatalogSingleton.Students)
                 {
                     // if the search box is not empty ,  get all students from catalog and try to search based on the first name 
-                    if (Search_By_Name != String.Empty && Search_By_Name != null)
+                    if (Search_By_Name != string.Empty && Search_By_Name != null)
                     {
                         if (!st.Name.ToLower().Trim().StartsWith(Search_By_Name.ToLower().Trim()))
                         {
@@ -117,7 +116,6 @@ namespace StudentManagementApp2UWP.ViewModel
         {
             get
             {
-
                 return _searchStudentText;
             }
             set

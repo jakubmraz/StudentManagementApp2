@@ -21,12 +21,6 @@ namespace StudentManagementApp2UWP.ViewModel
 
         }
 
-        public RegistrationCatalogSingleton Regs
-        {
-            get { return _regs; }
-            set { _regs = value; }
-        }
-
         public string Username
         {
             get { return _username; }
@@ -40,12 +34,16 @@ namespace StudentManagementApp2UWP.ViewModel
         }
 
 
+        public RegistrationCatalogSingleton Regs
+        {
+            get { return _regs; }
+            set { _regs = value; }
+        }
 
         public bool LogIn()
         {
             if (Regs.ReCheck(Username, Password))
             {
-                //Regs.ReCheck(Username, Password);
                 return true;
             }
             else

@@ -24,16 +24,14 @@ namespace StudentManagementApp2UWP.Model
             currentlogin = new Registration();
 
             _registrations.Add(new Registration() { Username = "admin", Password = "password" });
-            _registrations.Add(new Registration() { Username = "elvis ", Password = "password" });
-            _registrations.Add(new Registration() { Username = "leon", Password = "password" });
-            _registrations.Add(new Registration() { Username = "jakub", Password = "password" });
+            //_registrations.Add(new Registration() { Username = "elvis ", Password = "password" });
+            //_registrations.Add(new Registration() { Username = "leon", Password = "password" });
+            //_registrations.Add(new Registration() { Username = "jakub", Password = "password" });
         }
 
         public ObservableCollection<Registration> GetAllUsers()
         {
-
             return _registrations;
-
         }
 
         public Registration currentlogin { get; set; }

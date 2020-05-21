@@ -4,39 +4,81 @@ namespace StudentManagementApp2WebAPI
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    [Table("Student")]
-    public partial class Student
+    //[Table("Student")]
+    public  class Student
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        private int _student_Id;
+        private string _name;
+        private string _email;
+        private string _background;
+
         public Student()
         {
-            Grades = new HashSet<Grade>();
-            Programmes = new HashSet<Programme>();
         }
+
         public Student(int studentId, string name, string email, string background)
         {
-            Student_Id = studentId;
-            Name = name;
-            Email = email;
-            Background = background;
+            _student_Id = studentId;
+            _name = name;
+            _email = email;
+            _background = background;
+        }
+        public int Student_Id
+        {
+            get { return _student_Id; }
+            set { _student_Id = value; }
         }
 
-        [Key]
-        public int Student_Id { get; set; }
+        public string Name
+        {
+            get { return _name; }
+            set { _name = value; }
+        }
 
-        [StringLength(50)]
-        public string Name { get; set; }
+        public string Email
+        {
+            get { return _email; }
+            set { _email = value; }
+        }
+       
+        public string Background
+        {
+            get { return _background; }
+            set { _background = value; }
+        }
 
-        [StringLength(50)]
-        public string Email { get; set; }
 
-        [StringLength(50)]
-        public string Background { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Grade> Grades { get; set; }
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        //public Student()
+        //{
+        //    Grades = new HashSet<Grade>();
+        //    Programmes = new HashSet<Programme>();
+        //}
+        //public Student(int studentId, string name, string email, string background)
+        //{
+        //    Student_Id = studentId;
+        //    Name = name;
+        //    Email = email;
+        //    Background = background;
+        //}
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Programme> Programmes { get; set; }
+        //[Key]
+        //public int Student_Id { get; set; }
+
+        //[StringLength(50)]
+        //public string Name { get; set; }
+
+        //[StringLength(50)]
+        //public string Email { get; set; }
+
+        //[StringLength(50)]
+        //public string Background { get; set; }
+
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //public virtual ICollection<Grade> Grades { get; set; }
+
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //public virtual ICollection<Programme> Programmes { get; set; }
     }
 }

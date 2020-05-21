@@ -12,7 +12,7 @@ namespace StudentManagementApp2UWP.Model
     {
 
 
-        StudentManagementDBAccess<Student> studentAPIAsync = new StudentManagementDBAccess<Student>("http://localhost:50751/", "api/Students");
+        StudentManagementDBAccess<Student> studentAPIAsync = new StudentManagementDBAccess<Student>("https://localhost:44366/", "api/Students");
 
 
         private int _count;
@@ -22,12 +22,21 @@ namespace StudentManagementApp2UWP.Model
         private StudentCatalogSingleton()
         {
             _students = new ObservableCollection<Student>();
+
+            _students.Add((new Student()
+            {
+                Student_Id = 1,
+                Name = "Dominik",
+                Email = "dominik000@edu.eadj.dk",
+                Background = "Technical It-school"
+            }));
             _students = GetStudent();
         }
 
         public ObservableCollection<Student> GetStudent()
         {
-            return new ObservableCollection<Student>(studentAPIAsync.GetAll().Result);
+            //return new ObservableCollection<Student>(studentAPIAsync.GetAll().Result);
+            return _students;
         }
 
         public int Counting
