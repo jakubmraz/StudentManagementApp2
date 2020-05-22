@@ -39,12 +39,12 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="-20, 0, 0, 0" BorderBrush="Black" BorderThickness="1" Orientation="Horizontal">
-                        <TextBlock Text="{Binding Name}" FontSize="30" Width="400" Margin="10,0,0,0"/>
+                        <TextBlock Text="{Binding Name}" FontSize="30" Width="500" Margin="10,0,0,0"/>
                         <TextBlock Text="{Binding Year_Of_Beginning, Converter={StaticResource DateToStringFormatConverter}}" FontSize="30" Width="60"/>
                         <TextBlock Text="{Binding Year_Of_Beginning.Year}" FontSize="30" Width="140"/>
                         <TextBlock Text="{Binding Year_Of_End, Converter={StaticResource DateToStringFormatConverter}}" FontSize="30" Width="60"/>
                         <TextBlock Text ="{Binding Year_Of_End.Year}" FontSize="30" Width="280"/>
-                        <TextBlock Text="Active" FontSize="30" Width="120"/>
+                        <TextBlock Text="{Binding Activity}" FontSize="30" Width="180"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

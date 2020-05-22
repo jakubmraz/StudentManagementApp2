@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using Windows.Devices.Sensors;
 
 namespace StudentManagementApp2WebAPI
 {
@@ -28,6 +29,24 @@ namespace StudentManagementApp2WebAPI
 
         //Temporary before database works
         public ObservableCollection<Student> TempStudents { get; set; }
+
+        public string Activity
+        {
+            get
+            {
+                if (this.Year_Of_End<DateTime.Now)
+                {
+                    return "Ended";
+                }
+
+                if (Year_Of_Beginning > DateTime.Now)
+                {
+                    return "Scheduled";
+                }
+
+                return "Active";
+            }
+        }
 
         [Key]
         public int Programme_Id { get; set; }

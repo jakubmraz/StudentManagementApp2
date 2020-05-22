@@ -10,13 +10,13 @@ namespace StudentManagementApp2UWP.Model
 {
     class ProgrammeCatalogSingleton
     {
-        private StudentManagementDBAccess<Programme> programmeDbAccess = new StudentManagementDBAccess<Programme>("https://localhost:44307/", "api/Programmes/");
+        private StudentManagementDBAccess<Programme> programmeDbAccess = new StudentManagementDBAccess<Programme>("http://localhost:54142/", "api/Programmes/");
 
         private static ProgrammeCatalogSingleton _instance = null;
 
         public ProgrammeCatalogSingleton()
         {
-            //LoadFromDB();
+            LoadFromDB();
             Programme studentProgramme = new Programme("This one has students", new DateTime(2018, 9, 1), new DateTime(2020, 1, 1));
 
             Student newStudent = new Student(00, "Bob Bobby", "bob0000@edu.easj.dk", "Computer Science");
@@ -50,7 +50,7 @@ namespace StudentManagementApp2UWP.Model
         public async void LoadFromDB()
         {
             Programmes.Clear();
-            List<Programme> tempProgrammes;
+            List<Programme> tempProgrammes = new List<Programme>();
 
             //Task<List<Programme>> task1 = Task.Run(() => programmeDbAccess.GetAll());
             //Task.WaitAll(task1);
