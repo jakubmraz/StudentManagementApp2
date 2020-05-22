@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using StudentManagementApp2UWP;
 
 namespace StudentManagementApp2UWP.Model
 {
@@ -13,8 +14,6 @@ namespace StudentManagementApp2UWP.Model
         private HttpClientHandler _handler;
         private HttpClient _client;
         private string _url;
-
-
 
 
         public StudentManagementDBAccess(string serverUrl, string tableUrl)
@@ -67,14 +66,13 @@ namespace StudentManagementApp2UWP.Model
 
         public void DeleteObject(int id)
         {
-            //
+
             using (_client)
             {
                 string url = _url + id;
-                //
                 try
                 {
-                    var response = _client.DeleteAsync(url).Result;
+                    HttpResponseMessage response = _client.DeleteAsync(url).Result;
                     response.EnsureSuccessStatusCode();
                 }
                 catch (Exception ex)

@@ -19,7 +19,7 @@ namespace StudentManagementApp2WebAPI.Controllers
         // GET: api/Students
         public IQueryable<Student> GetStudents()
         {
-            return db.Students;
+         return db.Students;
         }
 
         // GET: api/Students/5

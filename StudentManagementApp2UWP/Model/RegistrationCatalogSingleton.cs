@@ -27,6 +27,7 @@ namespace StudentManagementApp2UWP.Model
             //_registrations.Add(new Registration() { Username = "elvis ", Password = "password" });
             //_registrations.Add(new Registration() { Username = "leon", Password = "password" });
             //_registrations.Add(new Registration() { Username = "jakub", Password = "password" });
+          
         }
 
         public ObservableCollection<Registration> GetAllUsers()

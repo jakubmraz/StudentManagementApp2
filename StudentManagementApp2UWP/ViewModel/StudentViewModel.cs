@@ -33,6 +33,8 @@ namespace StudentManagementApp2UWP.ViewModel
             {
                 _createStudentCommand = value;
                 OnPropertyChanged(nameof(SelectedStudent));
+                OnPropertyChanged(nameof(Count));
+
             }
         }
 
@@ -44,7 +46,8 @@ namespace StudentManagementApp2UWP.ViewModel
             {
                 _deleteStudentCommand = value;
                 OnPropertyChanged(nameof(SelectedStudent));
-                OnPropertyChanged(nameof(DeleteStudent));
+                OnPropertyChanged(nameof(Count));
+
             }
         }
 
@@ -86,7 +89,9 @@ namespace StudentManagementApp2UWP.ViewModel
             get
             {
                 var filteredstudents = new ObservableCollection<Student>();
-                foreach (var st in studentCatalogSingleton.Students)
+                ObservableCollection<Student> myList = studentCatalogSingleton.GetStudent();
+
+                foreach (var st in myList)
                 {
                     // if the search box is not empty ,  get all students from catalog and try to search based on the first name 
                     if (Search_By_Name != string.Empty && Search_By_Name != null)
@@ -102,7 +107,7 @@ namespace StudentManagementApp2UWP.ViewModel
                     // otherwise , if the searchbox is empty , get data from the singleton catalog
                     else
                     {
-                        filteredstudents = studentCatalogSingleton.Students;
+                        filteredstudents = studentCatalogSingleton.GetStudent();
                     }
                 }
                 return filteredstudents;

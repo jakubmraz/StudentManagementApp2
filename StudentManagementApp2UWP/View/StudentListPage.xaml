@@ -32,7 +32,7 @@
                             <TextBox Text="{Binding Student_Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="71" VerticalAlignment="Center"/>
 
                             <TextBlock Text="Name" Margin="15,0,0,0" VerticalAlignment="Center" Height="25" Width="83"/>
-                            <TextBox Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBox Text="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
                             <TextBlock Text="Email" Margin="15,0,0,0" VerticalAlignment="Center" Height="25" Width="83"/>
                             <TextBox Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
