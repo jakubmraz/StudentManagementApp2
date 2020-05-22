@@ -34,7 +34,7 @@ namespace StudentManagementApp2UWP.ViewModel
             _thisProgramme = new Programme();
 
             _thisProgramme = StaticObjects.StaticSelectedProgramme;
-            _students = ThisProgramme.TempStudents;
+            _students = new ObservableCollection<Student>(ThisProgramme.Students);
             //AllStudents = studentCatalog.Students;
 
             AllStudents = new ObservableCollection<Student>()
