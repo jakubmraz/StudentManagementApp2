@@ -10,22 +10,22 @@ namespace StudentManagementApp2UWP.Model
 {
     class ProgrammeCatalogSingleton
     {
-        private StudentManagementDBAccess<Programme> programmeDbAccess = new StudentManagementDBAccess<Programme>("http://localhost:54142/", "api/Programmes/");
+        private StudentManagementDBAccess<Programme> programmeDbAccess = new StudentManagementDBAccess<Programme>("api/Programmes/");
 
         private static ProgrammeCatalogSingleton _instance = null;
 
         public ProgrammeCatalogSingleton()
         {
             LoadFromDB();
-            Programme studentProgramme = new Programme("This one has students", new DateTime(2018, 9, 1), new DateTime(2020, 1, 1));
+            //Programme studentProgramme = new Programme("This one has students", new DateTime(2018, 9, 1), new DateTime(2020, 1, 1));
 
-            Student newStudent = new Student(00, "Bob Bobby", "bob0000@edu.easj.dk", "Computer Science");
+            //Student newStudent = new Student(00, "Bob Bobby", "bob0000@edu.easj.dk", "Computer Science");
 
-            Student newStudent2 = new Student(00, "Bob Bobby", "bob0000@edu.easj.dk", "Computer Science");
+            //Student newStudent2 = new Student(00, "Bob Bobby", "bob0000@edu.easj.dk", "Computer Science");
 
-            studentProgramme.TempStudents.Add(newStudent);
-            studentProgramme.TempStudents.Add(newStudent2);
-            Programmes.Add(studentProgramme);
+            //studentProgramme.TempStudents.Add(newStudent);
+            //studentProgramme.TempStudents.Add(newStudent2);
+            //Programmes.Add(studentProgramme);
         }
 
         public static ProgrammeCatalogSingleton Instance
