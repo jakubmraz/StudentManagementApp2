@@ -16,7 +16,7 @@ namespace StudentManagementApp2UWP.Model
         private ObservableCollection<Registration> _registrations;
 
 
-
+        private static string _url = "api/Admins/";
 
         private RegistrationCatalogSingleton()
         {
@@ -27,8 +27,15 @@ namespace StudentManagementApp2UWP.Model
             //_registrations.Add(new Registration() { Username = "elvis ", Password = "password" });
             //_registrations.Add(new Registration() { Username = "leon", Password = "password" });
             //_registrations.Add(new Registration() { Username = "jakub", Password = "password" });
-          
+            _registrations = GetAllUsers();
         }
+
+
+
+
+
+
+
 
         public ObservableCollection<Registration> GetAllUsers()
         {
@@ -49,18 +56,16 @@ namespace StudentManagementApp2UWP.Model
             get { return _Instance ?? (_Instance = new RegistrationCatalogSingleton()); }
         }
 
-        public ObservableCollection<Registration> allUsers
-        {
-            get
-            {
-                ObservableCollection<Registration> users = GetAllUsers();
+        //public ObservableCollection<Registration> allUsers
+        //{
+        //    get
+        //    {
+        //        ObservableCollection<Registration> users = GetAllUsers();
 
-                return new ObservableCollection<Registration>(GetAllUsers());
-            }
-        }
-
-
-        private ObservableCollection<Registration> userCollection = new ObservableCollection<Registration>();
+        //        return new ObservableCollection<Registration>(GetAllUsers());
+        //    }
+        //}
+       //private ObservableCollection<Registration> userCollection = new ObservableCollection<Registration>();
 
         public bool ReCheck(string username, string password)
         {
