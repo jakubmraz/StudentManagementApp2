@@ -20,6 +20,8 @@ namespace StudentManagementApp2UWP.ViewModel
         private ProgrammeCatalogSingleton programmeCatalog;
         private StudentCatalogSingleton studentCatalog;
 
+        private ConnectStudentsAndProgrammes connectStudentsAndProgrammes = new ConnectStudentsAndProgrammes();
+
         private ObservableCollection<Student> _students;
 
         private Student _selectedStudent;
@@ -29,23 +31,17 @@ namespace StudentManagementApp2UWP.ViewModel
 
         public ProgrammeInfoViewModel()
         {
+            connectStudentsAndProgrammes.LoadStudentsFromDB();
+
             programmeCatalog = ProgrammeCatalogSingleton.Instance;
             studentCatalog = StudentCatalogSingleton.Instance;
             _thisProgramme = new Programme();
 
             _thisProgramme = StaticObjects.StaticSelectedProgramme;
             _students = new ObservableCollection<Student>(ThisProgramme.Students);
-            //AllStudents = studentCatalog.Students;
+            AllStudents = studentCatalog.Students;
 
-            AllStudents = new ObservableCollection<Student>()
-            {
-                new Student(00, "Mario", "", ""),
-                new Student(01, "Luigi", "",""),
-                new Student(02, "Wario", "", ""),
-                new Student(03, "Waluigi", "", "")
-            };
-
-        OpenPopupCommand = new RelayCommand(OpenPopup);
+            OpenPopupCommand = new RelayCommand(OpenPopup);
             ClosePopupCommand = new RelayCommand(ClosePopup);
             AddStudentCommand = new RelayCommand(AddStudentToProgramme);
 
@@ -114,14 +110,14 @@ namespace StudentManagementApp2UWP.ViewModel
         {
             //ProgrammeCatalog.Instance.Programmes.FirstOrDefault(data => data.Programme_Id == ThisProgramme.Programme_Id).TempStudents.Add(SelectedStudent);
 
-            ProgrammeCatalogSingleton.Instance.Programmes.FirstOrDefault(data => data.Name == ThisProgramme.Name).TempStudents
+            ProgrammeCatalogSingleton.Instance.Programmes.FirstOrDefault(data => data.Name == ThisProgramme.Name).Students
                 .Add(SelectedStudent);
             //ProgrammeCatalogSingleton.Instance.Programmes.Remove(ThisProgramme);
             //ThisProgramme.TempStudents.Add(SelectedStudent);
             //ProgrammeCatalogSingleton.Instance.Programmes.Add(ThisProgramme);
             ClosePopup();
             SelectedStudent = null;
-            ThisProgramme = ThisProgramme; //To reload the page?
+            ThisProgramme = ThisProgramme; //To reload the page? NOPE, find a different way
         }
 
         public void OpenPopup()
