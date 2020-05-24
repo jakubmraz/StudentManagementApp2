@@ -32,9 +32,8 @@ namespace StudentManagementApp2UWP.ViewModel
             set
             {
                 _createStudentCommand = value;
+                //OnPropertyChanged(nameof(AddStudent));
                 OnPropertyChanged(nameof(SelectedStudent));
-                OnPropertyChanged(nameof(Count));
-
             }
         }
 
@@ -46,7 +45,7 @@ namespace StudentManagementApp2UWP.ViewModel
             {
                 _deleteStudentCommand = value;
                 OnPropertyChanged(nameof(SelectedStudent));
-                OnPropertyChanged(nameof(Count));
+                //OnPropertyChanged(nameof(Count));
 
             }
         }
@@ -66,12 +65,52 @@ namespace StudentManagementApp2UWP.ViewModel
             int id = SelectedStudent.Student_Id;
             studentCatalogSingleton.RemoveStudent(id);
             OnPropertyChanged(nameof(Count));
-
+            OnPropertyChanged(nameof(SelectedStudent));
         }
 
+        public int Count
+        {
+            get { return studentCatalogSingleton.Counting; }
+        }
+
+        //private ICommand _searchStudentText;
+        //public ICommand SearchStudentText
+        //{
+        //    get
+        //    {
+        //        return _searchStudentText;
+        //    }
+        //    set
+        //    {
+        //        _searchStudentText = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
+
+        //'''''''''''''''''''''''''''''''''''''''''''' CTOR ''''''''''''''''''''''''''''''
+        public StudentViewModel()
+        {
+            studentCatalogSingleton = StudentCatalogSingleton.Instance;
+            _createStudentCommand = new RelayCommand(AddStudent);
+            DeleteStudentCommand = new RelayCommand(DeleteStudent);
+            _selectedStudent = new Student();
+        }
+
+        //'''''''''''''''''''''''''''''''''''''''''''' AddStudent Method incl. fields ''''''''''''''''''''''''''''''
+        public void AddStudent()
+        {
+            Student sp = new Student();
+            sp.Student_Id = Student_Id;
+            sp.Name = Name;
+            sp.Email = Email;
+            sp.Background = Background;
+
+            studentCatalogSingleton.NewStudent(sp);
+            OnPropertyChanged(nameof(Count));
+        }
+
+
         //'''''''''''''''''''''''''''''''''''''''''''' CODE FOR SEARCH STUDENTS ''''''''''''''''''''''''''''''''''''''''''''
-
-
         private string _searchByName;
 
         public string Search_By_Name
@@ -113,43 +152,8 @@ namespace StudentManagementApp2UWP.ViewModel
                 return filteredstudents;
             }
 
-
         }
-
-        private ICommand _searchStudentText;
-        public ICommand SearchStudentText
-        {
-            get
-            {
-                return _searchStudentText;
-            }
-            set
-            {
-                _searchStudentText = value;
-                OnPropertyChanged();
-            }
-        }
-        //'''''''''''''''''''''''''''''''''''''''''''' CTOR ''''''''''''''''''''''''''''''
-        public StudentViewModel()
-        {
-            studentCatalogSingleton = StudentCatalogSingleton.Instance;
-            _createStudentCommand = new RelayCommand(AddStudent);
-            DeleteStudentCommand = new RelayCommand(DeleteStudent);
-            _selectedStudent = new Student();
-        }
-
-        //'''''''''''''''''''''''''''''''''''''''''''' AddStudent Method incl. fields ''''''''''''''''''''''''''''''
-        public void AddStudent()
-        {
-            Student sp = new Student();
-            sp.Student_Id = Student_Id;
-            sp.Name = Name;
-            sp.Email = Email;
-            sp.Background = Background;
-
-            studentCatalogSingleton.NewStudent(sp);
-            OnPropertyChanged(nameof(Count));
-        }
+        
 
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -158,11 +162,6 @@ namespace StudentManagementApp2UWP.ViewModel
         {
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        public int Count
-        {
-            get { return studentCatalogSingleton.Counting; }
         }
 
     }

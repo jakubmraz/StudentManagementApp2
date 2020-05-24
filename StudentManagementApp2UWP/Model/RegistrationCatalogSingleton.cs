@@ -22,20 +22,9 @@ namespace StudentManagementApp2UWP.Model
         {
             _registrations = new ObservableCollection<Registration>();
             currentlogin = new Registration();
-
-            _registrations.Add(new Registration() { Username = "admin", Password = "password" });
-            //_registrations.Add(new Registration() { Username = "elvis ", Password = "password" });
-            //_registrations.Add(new Registration() { Username = "leon", Password = "password" });
-            //_registrations.Add(new Registration() { Username = "jakub", Password = "password" });
-            _registrations = GetAllUsers();
+            _registrations.Add(new Registration(){Username = "admin", Password = "password"});
+            //_registrations = GetAllUsers();
         }
-
-
-
-
-
-
-
 
         public ObservableCollection<Registration> GetAllUsers()
         {
@@ -55,17 +44,6 @@ namespace StudentManagementApp2UWP.Model
         {
             get { return _Instance ?? (_Instance = new RegistrationCatalogSingleton()); }
         }
-
-        //public ObservableCollection<Registration> allUsers
-        //{
-        //    get
-        //    {
-        //        ObservableCollection<Registration> users = GetAllUsers();
-
-        //        return new ObservableCollection<Registration>(GetAllUsers());
-        //    }
-        //}
-       //private ObservableCollection<Registration> userCollection = new ObservableCollection<Registration>();
 
         public bool ReCheck(string username, string password)
         {

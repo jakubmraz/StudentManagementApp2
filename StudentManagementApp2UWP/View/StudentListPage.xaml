@@ -13,41 +13,43 @@
         <viewModel:StudentViewModel/>
     </Page.DataContext>
 
-    <Grid VerticalAlignment="Top" HorizontalAlignment="Center">
+    <Grid VerticalAlignment="Top" HorizontalAlignment="Center" >
         <StackPanel Margin="-817,0,-813,0"  >
             <TextBlock FontWeight="Bold" FontSize="40" Text="LIST OF STUDENTS" TextAlignment="Center"/>
             <TextBlock Text="{Binding Count, Mode=TwoWay}" FontSize="40" Height="105" Margin=" 500,0,0,0"></TextBlock>
 
-            <StackPanel Orientation="Horizontal" Width="1379" >
+            <StackPanel Orientation="Horizontal" Width="1300" >
                 <TextBlock   Height="50" Width="50" HorizontalAlignment="Left" FontFamily="Segoe UI Symbol" Text="&#xE11A;" FontSize="40"/>
-                <TextBox Margin="30,40,60,30" Text="{Binding Search_By_Name,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Height="50" PlaceholderText="Search by name" FontSize="26"   Width="1299"/>
+                <TextBox Margin="30,40,60,30" Text="{Binding Search_By_Name,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Height="50" PlaceholderText="Search by name" FontSize="26"   Width="1200"/>
             </StackPanel>
 
 
-            <ListView x:Name="lv" ItemsSource="{Binding FilteredStudents, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedStudent, Mode=TwoWay}" Height="820" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FFFFF387" >
+            <ListView x:Name="lv" ItemsSource="{Binding FilteredStudents, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedStudent, Mode=TwoWay}" Width="1200" Height="650" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FFFFF387" >
                 <ListView.ItemTemplate >
                     <DataTemplate >
-                        <StackPanel Orientation="Horizontal" Height="55" Margin=" 50,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  BorderBrush="Black"  BorderThickness="1">
+                        <StackPanel Orientation="Horizontal" Height="55" Width="1000" Margin=" 80,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  BorderBrush="Black"  BorderThickness="1" Padding="50,0,0,0">
                             <TextBlock Text="Student_Id" Width="78" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             <TextBox Text="{Binding Student_Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="71" VerticalAlignment="Center"/>
 
                             <TextBlock Text="Name" Margin="15,0,0,0" VerticalAlignment="Center" Height="25" Width="83"/>
-                            <TextBox Text="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBox Text="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150"/>
 
                             <TextBlock Text="Email" Margin="15,0,0,0" VerticalAlignment="Center" Height="25" Width="83"/>
-                            <TextBox Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBox Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="180"/>
 
                             <TextBlock Text="Background " Margin="15,0,5,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <TextBox Text="{Binding Background, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBox Text="{Binding Background, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100"/>
                         </StackPanel>
 
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
         </StackPanel>
-        <Button  Command="{Binding  DeleteStudentCommand, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Content="Delete Student" Margin="9,700,0,0" HorizontalAlignment="Left" />
-        <Button  Content="Go to MainPage" Margin="150,700,0,0" HorizontalAlignment="Left" Click="Button_Click" />
 
+        <StackPanel Width="200" Background="#999966" Height="50" Margin="9,880,0,0" HorizontalAlignment="Center">
+            <Button Background="Red"  Command="{Binding  DeleteStudentCommand, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="Delete Student" HorizontalAlignment="Center" Margin="0,9,0,0" VerticalAlignment="Center"/>
+            <!--<Button  Background="Gray" Content="Go to MainPage" Margin="150,700,0,0" HorizontalAlignment="Left" Click="Button_Click" />-->
+        </StackPanel>
 
     </Grid>
 </Page>

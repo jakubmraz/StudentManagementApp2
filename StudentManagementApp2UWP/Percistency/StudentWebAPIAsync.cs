@@ -21,7 +21,6 @@ namespace StudentManagementApp2UWP.Percistency
         {
             handler = new HttpClientHandler();
             handler.UseDefaultCredentials = true; // to make sure that the default credential are sent by the request
-                                                  // below we r going to create our Http client inside a using statement
             client = new HttpClient(handler);
             client.BaseAddress = new Uri(serverURL);
             client.DefaultRequestHeaders.Clear();
@@ -52,7 +51,7 @@ namespace StudentManagementApp2UWP.Percistency
 
         }
 
-        public async void CreateNewOne(T obj)
+        public void CreateNewOne(T obj)
         {
             using (client)
             {
@@ -60,7 +59,7 @@ namespace StudentManagementApp2UWP.Percistency
                 {
                     string data = JsonConvert.SerializeObject(obj);
                     StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-                    var response = await client.PostAsync(_url, content);
+                    var response =  client.PostAsync(_url, content).Result;
                     response.EnsureSuccessStatusCode();
                 }
                 catch (Exception ex)

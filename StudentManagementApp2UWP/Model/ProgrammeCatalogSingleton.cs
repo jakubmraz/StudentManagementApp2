@@ -62,5 +62,7 @@ namespace StudentManagementApp2UWP.Model
                 Programmes.Add(programme);
             }
         }
+
+        
     }
 }

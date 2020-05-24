@@ -14,12 +14,7 @@ namespace StudentManagementApp2UWP.Model
     class StudentCatalogSingleton : INotifyPropertyChanged
     {
 
-        //StudentManagementDBAccess<Student> studentAPIAsync = new StudentManagementDBAccess<Student>("http://localhost:56934/", "api/Students");
-
-//StudentWebAPIAsync studentWebApiAsync = new StudentWebAPIAsync("http://localhost:56934/", "api/Students/");
-
         private static string _url = "api/Students/";
-
         private int _count;
         private ObservableCollection<Student> _students;
 
@@ -27,12 +22,10 @@ namespace StudentManagementApp2UWP.Model
         private StudentCatalogSingleton()
         {
             _students = new ObservableCollection<Student>();
-
             _students = GetStudent();
-          
         }
-        private static StudentCatalogSingleton _Instance;
 
+        private static StudentCatalogSingleton _Instance;
         public static StudentCatalogSingleton Instance
         {
             get { return _Instance ?? (_Instance = new StudentCatalogSingleton()); }
@@ -45,45 +38,27 @@ namespace StudentManagementApp2UWP.Model
         }
 
 
-
         public ObservableCollection<Student> GetStudent()
         {
             StudentWebAPIAsync<Student> gStudentsAsync = new StudentWebAPIAsync<Student>(_url);
             List<Student> sList = gStudentsAsync.GetAll();
             return new ObservableCollection<Student>(sList);
-            //var tempst = (studentWebApiAsync.GetAll().Result);
-            //return new ObservableCollection<Student>(tempst);
-            // return new ObservableCollection<Student>();
-            //return _students;
         }
 
         public void NewStudent(Student s)
         {
             StudentWebAPIAsync<Student> newStudent = new StudentWebAPIAsync<Student>(_url);
             newStudent.CreateNewOne(s);
-            OnPropertyChanged(nameof(_students));
-            //OnPropertyChanged(nameof(Counting));
+            _students.Add(s);
         }
 
-        //public void NewStudent(Student st)
-        //{
-        //    studentWebApiAsync.CreateNew(st);
-        //    _students.Add(st);
-        //}
-
-
         public void RemoveStudent(int id)
-        {           
+        {
             StudentWebAPIAsync<Student> delStudent = new StudentWebAPIAsync<Student>(_url);
 
-            delStudent.DeleteOne(id); 
-            _students.Remove(Students.FirstOrDefault(s => s.Student_Id == id));
-
-            OnPropertyChanged(nameof(_students));
-            //OnPropertyChanged(nameof(Counting));
+             delStudent.DeleteOne(id);
+             _students.Remove(Students.FirstOrDefault(s => s.Student_Id == id));
             
-        //    studentWebApiAsync.DeleteObject(id);
-
         }
 
 
@@ -92,9 +67,6 @@ namespace StudentManagementApp2UWP.Model
             get { return _students.Count; }
         }
 
-
-
-       
 
         public static StudentCatalogSingleton Student { get; internal set; }
 
