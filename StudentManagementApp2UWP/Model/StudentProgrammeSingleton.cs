@@ -4,13 +4,15 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using StudentManagementApp2UWP.Percistency;
 using StudentManagementApp2WebAPI;
 
 namespace StudentManagementApp2UWP.Model
 {
     class StudentProgrammeSingleton
     {
-        private StudentManagementDBAccess<Student_Programme> studentProgrammeDbAccess = new StudentManagementDBAccess<Student_Programme>("api/Student_Programme/");
+        private StudentManagementDBAccess<Student_Programme> studentProgrammeDbAccess = new StudentManagementDBAccess<Student_Programme>("api/Student_Programme");
+        private StudentWebAPIAsync<Student_Programme> studentWebApiAsync = new StudentWebAPIAsync<Student_Programme>("api/Student_Programme");
 
         private static StudentProgrammeSingleton _instance = null;
 
@@ -39,11 +41,24 @@ namespace StudentManagementApp2UWP.Model
             List<Student_Programme> tempStudentProgrammes = new List<Student_Programme>();
 
             tempStudentProgrammes = await studentProgrammeDbAccess.GetAll();
+            //tempStudentProgrammes = studentWebApiAsync.GetAll();
 
             foreach (var programme in tempStudentProgrammes)
             {
                 StudentProgrammes.Add(programme);
             }
+        }
+
+        public void AddStudentToProgramme(Programme programme, Student student)
+        {
+            Student_Programme studentProgramme = new Student_Programme();
+            studentProgramme.Student_Id = student.Student_Id;
+            studentProgramme.Programme_Id = programme.Programme_Id;
+
+            studentProgrammeDbAccess.CreateNew(studentProgramme);
+            //studentWebApiAsync.CreateNewOne(studentProgramme);
+
+            LoadFromDB();
         }
     }
 }

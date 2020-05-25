@@ -9,7 +9,7 @@ using StudentManagementApp2UWP;
 
 namespace StudentManagementApp2UWP.Model
 {
-    class StudentManagementDBAccess<T> where T : class
+    class StudentManagementDBAccess<T> where T : class, new()
     {
         private HttpClientHandler _handler;
         private HttpClient _client;
@@ -21,7 +21,7 @@ namespace StudentManagementApp2UWP.Model
         {
             _handler = new HttpClientHandler();
             _handler.UseDefaultCredentials = true;
-            _client = new HttpClient(_handler);
+            _client = new HttpClient();
             _client.BaseAddress = new Uri(serverUrl);
             _client.DefaultRequestHeaders.Clear();
             _client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
@@ -30,8 +30,8 @@ namespace StudentManagementApp2UWP.Model
 
         public async Task<List<T>> GetAll()
         {
-            using (_client)
-            {
+            //using (HttpClient client = new HttpClient())
+            //{
                 try
                 {
                     var response = _client.GetAsync(_url).Result;
@@ -40,29 +40,37 @@ namespace StudentManagementApp2UWP.Model
                     List<T> list = JsonConvert.DeserializeObject<List<T>>(data);
                     return list;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return new List<T>();
                 }
-            }
+            //}
         }
 
         public void CreateNew(T obj)
         {
-            using (_client)
-            {
-                try
-                {
+            //using (HttpClient client = new HttpClient())
+            //{
+                //try
+                //{
                     string data = JsonConvert.SerializeObject(obj);
                     StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
                     var response = _client.PostAsync(_url, content).Result;
-                    response.EnsureSuccessStatusCode();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-            }
+                    //response.EnsureSuccessStatusCode();
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string s = response.Content.ReadAsStringAsync().Result;
+                    }
+                    else
+                    {
+                        var statuscode = response.StatusCode;
+                    }
+                //}
+                //catch (Exception ex)
+                //{
+                //    Console.WriteLine(ex.Message);
+                //}
+            //}
         }
 
         public void DeleteObject(int id)

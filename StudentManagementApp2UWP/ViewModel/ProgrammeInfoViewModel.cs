@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Windows.ApplicationModel.Appointments.AppointmentsProvider;
 using StudentManagementApp2UWP.Common;
 using StudentManagementApp2UWP.Model;
 using StudentManagementApp2WebAPI;
@@ -19,10 +20,12 @@ namespace StudentManagementApp2UWP.ViewModel
 
         private ProgrammeCatalogSingleton programmeCatalog;
         private StudentCatalogSingleton studentCatalog;
+        private StudentProgrammeSingleton studentProgrammeSingleton;
 
         private ConnectStudentsAndProgrammes connectStudentsAndProgrammes = new ConnectStudentsAndProgrammes();
 
         private ObservableCollection<Student> _students;
+        private ObservableCollection<Student> _allStudents;
 
         private Student _selectedStudent;
 
@@ -35,11 +38,12 @@ namespace StudentManagementApp2UWP.ViewModel
 
             programmeCatalog = ProgrammeCatalogSingleton.Instance;
             studentCatalog = StudentCatalogSingleton.Instance;
+            studentProgrammeSingleton = StudentProgrammeSingleton.Instance;
+            
             _thisProgramme = new Programme();
 
             _thisProgramme = StaticObjects.StaticSelectedProgramme;
             _students = new ObservableCollection<Student>(ThisProgramme.Students);
-            AllStudents = studentCatalog.Students;
 
             OpenPopupCommand = new RelayCommand(OpenPopup);
             ClosePopupCommand = new RelayCommand(ClosePopup);
@@ -70,7 +74,20 @@ namespace StudentManagementApp2UWP.ViewModel
                 OnPropertyChanged();
             }
         }
-        public ObservableCollection<Student> AllStudents { get; }
+
+        public ObservableCollection<Student> AllStudents
+        {
+            get
+            {
+                _allStudents = studentCatalog.Students;
+                foreach (var student in ThisProgramme.Students)
+                {
+                    _allStudents.Remove(student);
+                }
+
+                return _allStudents;
+            }
+        }
 
         public ICommand OpenPopupCommand { get; set; }
         public ICommand ClosePopupCommand { get; set; }
@@ -110,14 +127,21 @@ namespace StudentManagementApp2UWP.ViewModel
         {
             //ProgrammeCatalog.Instance.Programmes.FirstOrDefault(data => data.Programme_Id == ThisProgramme.Programme_Id).TempStudents.Add(SelectedStudent);
 
-            ProgrammeCatalogSingleton.Instance.Programmes.FirstOrDefault(data => data.Name == ThisProgramme.Name).Students
-                .Add(SelectedStudent);
+            //ProgrammeCatalogSingleton.Instance.Programmes.FirstOrDefault(data => data.Name == ThisProgramme.Name).Students
+                //.Add(SelectedStudent);
             //ProgrammeCatalogSingleton.Instance.Programmes.Remove(ThisProgramme);
             //ThisProgramme.TempStudents.Add(SelectedStudent);
             //ProgrammeCatalogSingleton.Instance.Programmes.Add(ThisProgramme);
+            studentProgrammeSingleton.AddStudentToProgramme(ThisProgramme, SelectedStudent);
+            connectStudentsAndProgrammes.LoadStudentsFromDB();
+
             ClosePopup();
             SelectedStudent = null;
-            ThisProgramme = ThisProgramme; //To reload the page? NOPE, find a different way
+
+            //ThisProgramme = ThisProgramme; //To reload the page? NOPE, find a different way
+            //Students = new ObservableCollection<Student>(ThisProgramme.Students);
+            ThisProgramme =
+                programmeCatalog.Programmes.FirstOrDefault(data => data.Programme_Id == ThisProgramme.Programme_Id);
         }
 
         public void OpenPopup()

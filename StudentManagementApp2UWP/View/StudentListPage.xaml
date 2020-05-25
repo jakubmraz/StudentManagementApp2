@@ -24,7 +24,7 @@
             </StackPanel>
 
 
-            <ListView x:Name="lv" ItemsSource="{Binding FilteredStudents, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedStudent, Mode=TwoWay}" Width="1200" Height="650" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FFFFF387" >
+            <ListView x:Name="lv" ItemsSource="{Binding FilteredStudents, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedStudent, Mode=TwoWay}" Width="1200" Height="450" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FFFFF387" >
                 <ListView.ItemTemplate >
                     <DataTemplate >
                         <StackPanel Orientation="Horizontal" Height="55" Width="1000" Margin=" 80,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  BorderBrush="Black"  BorderThickness="1" Padding="50,0,0,0">
@@ -46,7 +46,7 @@
             </ListView>
         </StackPanel>
 
-        <StackPanel Width="200" Background="#999966" Height="50" Margin="9,880,0,0" HorizontalAlignment="Center">
+        <StackPanel Width="200" Background="#999966" Height="50" Margin="9,720,0,0" HorizontalAlignment="Center">
             <Button Background="Red"  Command="{Binding  DeleteStudentCommand, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="Delete Student" HorizontalAlignment="Center" Margin="0,9,0,0" VerticalAlignment="Center"/>
             <!--<Button  Background="Gray" Content="Go to MainPage" Margin="150,700,0,0" HorizontalAlignment="Left" Click="Button_Click" />-->
         </StackPanel>

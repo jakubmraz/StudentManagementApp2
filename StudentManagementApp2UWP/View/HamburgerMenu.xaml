@@ -45,6 +45,12 @@
                             <TextBlock Margin="19,0" VerticalAlignment="Center" Text="Students"/>
                         </StackPanel>
                     </Button>
+                    <Button Name="AddStudentsButton" Style="{StaticResource ButtonStyle}" HorizontalContentAlignment="Left"  FontWeight="Normal" Click="AddStudentsButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8FA;"/>
+                            <TextBlock Margin="19,0" VerticalAlignment="Center" Text="Add Student"/>
+                        </StackPanel>
+                    </Button>
                 </StackPanel>
             </SplitView.Pane>
 

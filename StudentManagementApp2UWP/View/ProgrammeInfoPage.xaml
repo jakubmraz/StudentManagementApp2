@@ -53,7 +53,7 @@
                 <TextBlock Margin="20,0,0,0"  Style="{StaticResource TextStyle}" Text="Money 101, Capitalism Theory, Yacht Shopping"/>
             </StackPanel>
         </StackPanel>
-        <ListView Margin="40,320,60,120" Background="#FFFFF387" ItemsSource="{Binding Students, Mode=TwoWay}" IsEnabled="{Binding ListEnabled}">
+        <ListView Margin="40,320,60,120" Background="#FFFFF387" ItemsSource="{Binding Students, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding ListEnabled}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel BorderBrush="Black" BorderThickness="1" Orientation="Horizontal" Margin="0,0,0,0">

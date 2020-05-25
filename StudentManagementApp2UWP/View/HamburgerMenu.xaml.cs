@@ -54,6 +54,14 @@ namespace StudentManagementApp2UWP.View
             ProgrammesButton.FontWeight = FontWeights.Normal;
             CampusesButton.FontWeight = FontWeights.Normal;
             StudentsButton.FontWeight = FontWeights.Normal;
+            AddStudentsButton.FontWeight = FontWeights.Normal;
+        }
+
+        private void AddStudentsButton_Click(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.Navigate(typeof(CreateStudent));
+            ResetFontWeights();
+            AddStudentsButton.FontWeight = FontWeights.Bold;
         }
     }
 }
