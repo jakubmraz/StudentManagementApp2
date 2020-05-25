@@ -66,6 +66,7 @@ namespace StudentManagementApp2UWP.ViewModel
             studentCatalogSingleton.RemoveStudent(id);
             OnPropertyChanged(nameof(Count));
             OnPropertyChanged(nameof(SelectedStudent));
+            OnPropertyChanged(nameof(FilteredStudents));
         }
 
         public int Count
@@ -73,19 +74,6 @@ namespace StudentManagementApp2UWP.ViewModel
             get { return studentCatalogSingleton.Counting; }
         }
 
-        //private ICommand _searchStudentText;
-        //public ICommand SearchStudentText
-        //{
-        //    get
-        //    {
-        //        return _searchStudentText;
-        //    }
-        //    set
-        //    {
-        //        _searchStudentText = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
 
         //'''''''''''''''''''''''''''''''''''''''''''' CTOR ''''''''''''''''''''''''''''''
         public StudentViewModel()

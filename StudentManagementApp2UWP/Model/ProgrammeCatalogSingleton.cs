@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using StudentManagementApp2UWP.Percistency;
 using StudentManagementApp2WebAPI;
 
 namespace StudentManagementApp2UWP.Model
@@ -11,6 +12,7 @@ namespace StudentManagementApp2UWP.Model
     class ProgrammeCatalogSingleton
     {
         private StudentManagementDBAccess<Programme> programmeDbAccess = new StudentManagementDBAccess<Programme>("api/Programmes/");
+       //private StudentWebAPIAsync<Programme> programmeDbAccess = new StudentWebAPIAsync<Programme>("api/Programmes/");
 
         private static ProgrammeCatalogSingleton _instance = null;
 

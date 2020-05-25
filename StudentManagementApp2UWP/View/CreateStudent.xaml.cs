@@ -27,7 +27,7 @@ namespace StudentManagementApp2UWP.View
             this.InitializeComponent();
         }
 
-        private void AppBarButton_Click_1(object sender, RoutedEventArgs e)
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(StudentListPage));
         }

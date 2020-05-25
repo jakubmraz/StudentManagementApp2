@@ -48,6 +48,7 @@
 
             <StackPanel Orientation="Horizontal"  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="371,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="96" Width="336">
                 <AppBarButton Background="#9999" Command="{Binding CreateStudentCommand}" Label="Add Student" Width="138"  Height="86" Margin="10,10"/>
+                <AppBarButton Background="#9999" Label="List of Student" Width="138"  Height="86" Margin="10,10" Click="AppBarButton_Click" />
             </StackPanel>
 
 

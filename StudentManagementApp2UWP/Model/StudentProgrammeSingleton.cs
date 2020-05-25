@@ -11,8 +11,8 @@ namespace StudentManagementApp2UWP.Model
 {
     class StudentProgrammeSingleton
     {
-        private StudentManagementDBAccess<Student_Programme> studentProgrammeDbAccess = new StudentManagementDBAccess<Student_Programme>("api/Student_Programme");
-        private StudentWebAPIAsync<Student_Programme> studentWebApiAsync = new StudentWebAPIAsync<Student_Programme>("api/Student_Programme");
+       private StudentManagementDBAccess<Student_Programme> studentProgrammeDbAccess = new StudentManagementDBAccess<Student_Programme>("api/Student_Programme");
+        //private StudentWebAPIAsync<Student_Programme> studentWebApiAsync = new StudentWebAPIAsync<Student_Programme>("api/Student_Programme");
 
         private static StudentProgrammeSingleton _instance = null;
 
