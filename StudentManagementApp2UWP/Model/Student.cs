@@ -42,5 +42,7 @@ namespace StudentManagementApp2WebAPI
             set { _background = value; }
         }
 
+        public object Username { get; internal set; }
+        public object Password { get; internal set; }
     }
 }

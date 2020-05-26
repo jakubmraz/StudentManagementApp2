@@ -6,6 +6,8 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using StudentManagementApp2UWP.Percistency;
+using StudentManagementApp2WebAPI;
 
 namespace StudentManagementApp2UWP.Model
 {
@@ -22,8 +24,8 @@ namespace StudentManagementApp2UWP.Model
         {
             _registrations = new ObservableCollection<Registration>();
             currentlogin = new Registration();
-            _registrations.Add(new Registration(){Username = "admin", Password = "password"});
-            //_registrations = GetAllUsers();
+            //_registrations.Add(new Registration(){Username = "admin", Password = "password"});
+            _registrations = GetAllUsers();
         }
 
         public ObservableCollection<Registration> GetAllUsers()
@@ -33,10 +35,6 @@ namespace StudentManagementApp2UWP.Model
 
         public Registration currentlogin { get; set; }
 
-        public void AddedUser(Registration user)
-        {
-            _registrations.Add(user);
-        }
 
         private static RegistrationCatalogSingleton _Instance;
 
@@ -47,8 +45,10 @@ namespace StudentManagementApp2UWP.Model
 
         public bool ReCheck(string username, string password)
         {
+            StudentWebAPIAsync<Admin> regApiAsync = new StudentWebAPIAsync<Admin>(_url);
+
             bool status = false;
-            foreach (var r in GetAllUsers())
+            foreach (var r in regApiAsync.GetAll())
             {
                 if (r.Username.Equals(username) && r.Password.Equals(password))
                 {
