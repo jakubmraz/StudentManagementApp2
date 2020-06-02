@@ -142,6 +142,8 @@ namespace StudentManagementApp2UWP.ViewModel
             //Students = new ObservableCollection<Student>(ThisProgramme.Students);
             ThisProgramme =
                 programmeCatalog.Programmes.FirstOrDefault(data => data.Programme_Id == ThisProgramme.Programme_Id);
+
+            OnPropertyChanged(nameof(ThisProgramme));
         }
 
         public void OpenPopup()

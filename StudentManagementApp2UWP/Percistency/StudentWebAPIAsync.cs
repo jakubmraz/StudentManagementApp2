@@ -15,6 +15,8 @@ namespace StudentManagementApp2UWP.Percistency
         HttpClient client;
         string _url;
         const string serverURL = "http://localhost:56934/";
+        //const string serverURL = "http://localhost:44366/"; 
+
 
 
         public StudentWebAPIAsync( string url)

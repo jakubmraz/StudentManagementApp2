@@ -14,8 +14,8 @@ namespace StudentManagementApp2UWP.Model
         private HttpClientHandler _handler;
         private HttpClient _client;
         private string _url;
-        //private const string serverUrl = "http://localhost:54142/";
-        private const string serverUrl = "http://localhost:56934/";
+        //private const string serverUrl = "http://localhost:44366/"; 
+        const string serverUrl = "http://localhost:56934/";
 
         public StudentManagementDBAccess(string tableUrl)
         {
