@@ -13,8 +13,8 @@
         <viewModel:StudentViewModel/>
     </Page.DataContext>
 
-    <Grid Background="#FFFFF387">
-        <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Height="715" Width="1018" Background="#9999">
+    <Grid >
+        <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Height="715" Width="1018" Background="#FFFFF387" CornerRadius="20">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="211*"/>
                 <ColumnDefinition Width="298*"/>
@@ -32,7 +32,7 @@
             <TextBox Grid.Column="1" TextWrapping="Wrap" Text="{Binding Student_Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Height="32" Margin="0,0,100,0"/>-->
 
             <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Text="Please enter some basic students information here" FontSize="24" FontWeight="Bold" Height="30" HorizontalTextAlignment="Center" TextAlignment="Center" ></TextBlock>
+                <TextBlock Text="Please enter basic students information here" FontSize="24" FontWeight="Bold" Height="30" HorizontalTextAlignment="Center" TextAlignment="Center" ></TextBlock>
             </StackPanel>
 
 
@@ -50,9 +50,6 @@
                 <AppBarButton Background="#9999" Command="{Binding CreateStudentCommand}" Label="Add Student" Width="138"  Height="86" Margin="10,10"/>
                 <AppBarButton Background="#9999" Label="List of Student" Width="138"  Height="86" Margin="10,10" Click="AppBarButton_Click" />
             </StackPanel>
-
-
-
 
         </Grid>
     </Grid>

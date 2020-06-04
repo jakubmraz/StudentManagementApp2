@@ -33,6 +33,7 @@
                             <TextBlock Margin="19,0" VerticalAlignment="Center" Text="Campuses"/>
                         </StackPanel>
                     </Button>
+
                     <Button Name="ProgrammesButton" Style="{StaticResource ButtonStyle}" HorizontalContentAlignment="Left" Click="ProgrammesButton_Click" FontWeight="Normal">
                         <StackPanel Orientation="Horizontal">
                             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE82D;"/>

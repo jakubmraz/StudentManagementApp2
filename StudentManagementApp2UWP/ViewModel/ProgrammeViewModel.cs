@@ -220,5 +220,8 @@ namespace StudentManagementApp2UWP.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+
+
     }
 }

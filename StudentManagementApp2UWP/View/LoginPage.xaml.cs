@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using StudentManagementApp2UWP.View;
 using StudentManagementApp2UWP.ViewModel;
+using MenuBar = StudentManagementApp2UWP.View.MenuBar;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -36,7 +37,7 @@ namespace StudentManagementApp2UWP
         {
             if (registration.LogIn())
             {
-                Frame.Navigate(typeof(HamburgerMenu));
+                Frame.Navigate(typeof(MenuBar));
             }
             else
             {

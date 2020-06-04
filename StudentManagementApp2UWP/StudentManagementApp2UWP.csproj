@@ -155,6 +155,9 @@
     <Compile Include="ViewModel\ProgrammeViewModel.cs" />
     <Compile Include="ViewModel\RegistrationViewModel.cs" />
     <Compile Include="ViewModel\StudentViewModel.cs" />
+    <Compile Include="View\MenuBar.xaml.cs">
+      <DependentUpon>MenuBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ProgrammeInfoPage.xaml.cs">
       <DependentUpon>ProgrammeInfoPage.xaml</DependentUpon>
     </Compile>
@@ -206,6 +209,10 @@
     <Page Include="View\LoginPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\MenuBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ProgrammeInfoPage.xaml">
       <SubType>Designer</SubType>
