@@ -11,9 +11,7 @@ namespace StudentManagementApp2UWP.Model
 {
     class StudentProgrammeSingleton
     {
-       private StudentManagementDBAccess<Student_Programme> studentProgrammeDbAccess = new StudentManagementDBAccess<Student_Programme>("api/Student_Programme");
-
-        private StudentWebAPIAsync<Student_Programme> studentWebApiAsync = new StudentWebAPIAsync<Student_Programme>("api/Student_Programme");
+        private StudentManagementDBAccess<Student_Programme> studentProgrammeDbAccess = new StudentManagementDBAccess<Student_Programme>("api/Student_Programme");
 
         private static StudentProgrammeSingleton _instance = null;
 
@@ -43,8 +41,6 @@ namespace StudentManagementApp2UWP.Model
 
             tempStudentProgrammes = await studentProgrammeDbAccess.GetAll();
 
-            tempStudentProgrammes = studentWebApiAsync.GetAll();
-
             foreach (var programme in tempStudentProgrammes)
             {
                 StudentProgrammes.Add(programme);
@@ -58,8 +54,6 @@ namespace StudentManagementApp2UWP.Model
             studentProgramme.Programme_Id = programme.Programme_Id;
 
             studentProgrammeDbAccess.CreateNew(studentProgramme);
-
-            studentWebApiAsync.CreateNewOne(studentProgramme);
 
             LoadFromDB();
         }

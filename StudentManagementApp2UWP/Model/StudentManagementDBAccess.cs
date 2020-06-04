@@ -51,12 +51,12 @@ namespace StudentManagementApp2UWP.Model
         {
             //using (HttpClient client = new HttpClient())
             //{
-                //try
-                //{
+                try
+                {
                     string data = JsonConvert.SerializeObject(obj);
                     StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
                     var response = _client.PostAsync(_url, content).Result;
-                    //response.EnsureSuccessStatusCode();
+                    response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
                         string s = response.Content.ReadAsStringAsync().Result;
@@ -65,11 +65,11 @@ namespace StudentManagementApp2UWP.Model
                     {
                         var statuscode = response.StatusCode;
                     }
-                //}
-                //catch (Exception ex)
-                //{
-                //    Console.WriteLine(ex.Message);
-                //}
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             //}
         }
 
