@@ -29,7 +29,7 @@ namespace StudentManagementApp2UWP.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            (this.Parent as Frame).Navigate(typeof(ProgrammeInfoPage));
+            Frame.Navigate(typeof(ProgrammeInfoPage));
         }
     }
 }

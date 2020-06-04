@@ -40,8 +40,9 @@ namespace StudentManagementApp2UWP.Model
 
         public ObservableCollection<Student> GetStudent()
         {
-            StudentWebAPIAsync<Student> gStudentsAsync = new StudentWebAPIAsync<Student>(_url);
-            List<Student> sList = gStudentsAsync.GetAll();
+            //StudentWebAPIAsync<Student> gStudentsAsync = new StudentWebAPIAsync<Student>(_url);
+            StudentManagementDBAccess<Student> gStudentsAsync = new StudentManagementDBAccess<Student>(_url);
+            List<Student> sList = gStudentsAsync.GetAll().Result;
             return new ObservableCollection<Student>(sList);
         }
 
