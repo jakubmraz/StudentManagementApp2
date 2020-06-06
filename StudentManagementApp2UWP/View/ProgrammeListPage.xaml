@@ -50,5 +50,8 @@
             </ListView.ItemTemplate>
         </ListView>
         <Button Content="View" Click="Button_Click" VerticalAlignment="Bottom"/>
+
+        <!--<Button  Content="Delete" Command="{Binding  DeleteProgramCommand, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom" Margin="60,0,0,0"/>-->
+
     </Grid>
 </Page>

@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Foundation.Diagnostics;
 using StudentManagementApp2UWP.Percistency;
 using StudentManagementApp2WebAPI;
 
@@ -19,6 +21,7 @@ namespace StudentManagementApp2UWP.Model
 
 
         private static string _url = "api/Admins/";
+        private static string U_url = "api/Users";
 
         private RegistrationCatalogSingleton()
         {
@@ -46,7 +49,7 @@ namespace StudentManagementApp2UWP.Model
         public bool ReCheck(string username, string password)
         {
             StudentWebAPIAsync<Admin> regApiAsync = new StudentWebAPIAsync<Admin>(_url);
-
+           
             bool status = false;
             foreach (var r in regApiAsync.GetAll())
             {
@@ -61,6 +64,7 @@ namespace StudentManagementApp2UWP.Model
             }
             return status;
         }
+
 
 
 

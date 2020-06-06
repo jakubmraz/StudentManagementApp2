@@ -57,8 +57,8 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel BorderBrush="Black" BorderThickness="1" Orientation="Horizontal" Margin="0,0,0,0">
-                        <TextBlock Text="{Binding Name}" FontSize="30" Width="200" Margin="10,0,0,0"/>
-                        <TextBlock Text="{Binding Email}" FontSize="30" Width="200"/>
+                        <TextBlock Text="{Binding Name}" FontSize="30" Width="270" Margin="10,0,0,0"/>
+                        <TextBlock Text="{Binding Email}" FontSize="30" Width="270"/>
                         <TextBlock Text="{Binding Background}" FontSize="30" Width="200"/>
                         <TextBlock Text="Active" FontSize="30" Width="120"/>
                     </StackPanel>
@@ -76,14 +76,14 @@
                         <TextBlock Margin="10,0,0,0" Text="Select a student to add:" FontSize="30"/>
                     </StackPanel>
 
-                    <ListView Background="#FFFFF387" ItemsSource="{Binding AllStudents}" SelectedItem="{Binding SelectedStudent, Mode=TwoWay}" Height="200">
+                    <ListView Background="#FFFFF387" ItemsSource="{Binding AllStudents, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedStudent, Mode=TwoWay}" Height="200">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel BorderBrush="Black" BorderThickness="1" Orientation="Horizontal" Margin="0,0,0,0">
-                                    <TextBlock Text="{Binding Name}" FontSize="30" Width="200" Margin="10,0,0,0"/>
-                                    <TextBlock Text="{Binding Email}" FontSize="30" Width="200"/>
-                                    <TextBlock Text="{Binding Background}" FontSize="30" Width="200"/>
-                                    <TextBlock Text="Active" FontSize="30" Width="120"/>
+                                    <TextBlock Text="{Binding Name}" FontSize="30" Width="250" Margin="10,0,0,0"/>
+                                    <TextBlock Text="{Binding Email}" FontSize="30" Width="250"/>
+                                    <TextBlock Text="{Binding Background}" FontSize="30" Width="170"/>
+                                    <TextBlock Text="Active" FontSize="30" Width="150"/>
                                 </StackPanel>
                             </DataTemplate>
                         </ListView.ItemTemplate>

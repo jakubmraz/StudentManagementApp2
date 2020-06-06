@@ -23,8 +23,9 @@ namespace StudentManagementApp2WebAPI
             Students = new ObservableCollection<Student>();
         }
 
-        public Programme(string name, DateTime yearOfBeginning, DateTime yearOfEnd)
+        public Programme(int programme_Id, string name, DateTime yearOfBeginning, DateTime yearOfEnd)
         {
+            Programme_Id = programme_Id;
             Name = name;
             Year_Of_Beginning = yearOfBeginning;
             Year_Of_End = yearOfEnd;

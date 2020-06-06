@@ -79,7 +79,7 @@ namespace StudentManagementApp2UWP.ViewModel
         {
             get
             {
-                _allStudents = studentCatalog.Students;
+                _allStudents = new ObservableCollection<Student>(studentCatalog.Students);
                 foreach (var student in ThisProgramme.Students)
                 {
                     _allStudents.Remove(student);
@@ -140,10 +140,12 @@ namespace StudentManagementApp2UWP.ViewModel
 
             //ThisProgramme = ThisProgramme; //To reload the page? NOPE, find a different way
             //Students = new ObservableCollection<Student>(ThisProgramme.Students);
-            ThisProgramme =
-                programmeCatalog.Programmes.FirstOrDefault(data => data.Programme_Id == ThisProgramme.Programme_Id);
+            //ThisProgramme =
+            //    programmeCatalog.Programmes.FirstOrDefault(data => data.Programme_Id == ThisProgramme.Programme_Id);
 
-            OnPropertyChanged(nameof(ThisProgramme));
+            //OnPropertyChanged(nameof(ThisProgramme));
+            //All of this is totally redundant, ThisProgramme updates correctly, it's Students that doesn't update
+            ReloadData();
         }
 
         public void OpenPopup()
@@ -156,6 +158,12 @@ namespace StudentManagementApp2UWP.ViewModel
         {
             ListEnabled = true;
             PopupOpen = false;
+        }
+
+        public void ReloadData()
+        {
+            Students = new ObservableCollection<Student>(ThisProgramme.Students);
+            OnPropertyChanged(nameof(AllStudents));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

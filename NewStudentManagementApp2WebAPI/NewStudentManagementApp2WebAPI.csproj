@@ -169,6 +169,7 @@
     <Compile Include="Controllers\ProgrammesController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Controllers\Student_ProgrammeController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Exam.cs" />
     <Compile Include="Global.asax.cs">

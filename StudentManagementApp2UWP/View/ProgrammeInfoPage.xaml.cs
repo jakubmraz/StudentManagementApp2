@@ -22,11 +22,12 @@ namespace StudentManagementApp2UWP.View
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class ProgrammeInfoPage : Page
-    {ProgrammeInfoViewModel pvm = new ProgrammeInfoViewModel();
+    {//ProgrammeInfoViewModel pvm = new ProgrammeInfoViewModel();
+        //For the tenth time, please stop adding this to my files, Elvis. You make it load the viewmodel twice.
         public ProgrammeInfoPage()
         {
             this.InitializeComponent();
-            this.DataContext = pvm;
+            //this.DataContext = pvm;
         }
     }
 }

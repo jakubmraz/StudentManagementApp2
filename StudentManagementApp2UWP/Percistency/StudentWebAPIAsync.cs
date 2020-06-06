@@ -70,6 +70,7 @@ namespace StudentManagementApp2UWP.Percistency
                 }
             }
         }
+
         public async Task<T> DeleteOne(int id)
         {
             using (client)
@@ -77,7 +78,7 @@ namespace StudentManagementApp2UWP.Percistency
                 try
                 {
                     string d_url = _url + id;
-                    var response =   client.DeleteAsync(d_url).Result;
+                    var response = await client.DeleteAsync(d_url);
                     response.EnsureSuccessStatusCode();
                     string data = response.Content.ReadAsStringAsync().Result;
                    return JsonConvert.DeserializeObject<T>(data);
@@ -88,7 +89,5 @@ namespace StudentManagementApp2UWP.Percistency
                 }
             }
         }
-
-
     }
 }
