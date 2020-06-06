@@ -52,6 +52,17 @@ namespace StudentManagementApp2UWP.ViewModel
             }
         }
 
+        public bool LogInUser()
+        {
+            if (Regs.Check(Username, Password))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
        
     }
 }

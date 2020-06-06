@@ -66,6 +66,24 @@ namespace StudentManagementApp2UWP.Model
         }
 
 
+        public bool Check(string username, string password)
+        {
+            StudentWebAPIAsync<User> userApiAsync = new StudentWebAPIAsync<User>(U_url);
+
+            bool log = false;
+            foreach (var u in userApiAsync.GetAll())
+            {
+                if (u.Username.Equals(username) && u.Password.Equals(password))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return log;
+        }
 
 
 

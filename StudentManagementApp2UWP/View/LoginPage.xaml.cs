@@ -39,7 +39,10 @@ namespace StudentManagementApp2UWP
             {
                 Frame.Navigate(typeof(MenuBar));
             }
-           
+            else if (registration.LogInUser())
+            {
+                Frame.Navigate(typeof(HamburgerMenu));
+            }
             else 
             {
                 var message = new MessageDialog("Your username or password is incorrect \nPlease Try again 😊 ", "Fail Login");
