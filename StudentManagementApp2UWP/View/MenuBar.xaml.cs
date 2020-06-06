@@ -26,7 +26,7 @@ namespace StudentManagementApp2UWP.View
         public MenuBar()
         {
             this.InitializeComponent();
-            ContentFrame.Navigate(typeof(CampusListPage));
+            //.Navigate(typeof(CampusListPage));
         }
 
         private void Pane_Click(object sender, RoutedEventArgs e)
@@ -72,6 +72,14 @@ namespace StudentManagementApp2UWP.View
             CampusesButton.FontWeight = FontWeights.Normal;
             StudentsButton.FontWeight = FontWeights.Normal;
             AddStudentsButton.FontWeight = FontWeights.Normal;
+        }
+
+        private void addProg_Click(object sender, RoutedEventArgs e)
+        {
+            SideMenu.IsPaneOpen = !SideMenu.IsPaneOpen;
+            ContentFrame.Navigate(typeof(CreatePrograms));
+            ResetFontWeights();
+            addProg.FontWeight = FontWeights.Bold;
         }
     }
 }

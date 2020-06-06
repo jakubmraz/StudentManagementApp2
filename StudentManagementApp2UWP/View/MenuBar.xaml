@@ -26,8 +26,9 @@
             <RowDefinition Height="19*"/>
         </Grid.RowDefinitions>
 
-        <SplitView x:Name="SideMenu" IsPaneOpen="false" DisplayMode="CompactInline" OpenPaneLength="200" CompactPaneLength="50" PaneBackground="#00C6F3" Grid.RowSpan="2">
+        <TextBlock Text="Hello, Admin" FontSize="40" Margin="250,10,0,0"></TextBlock>
 
+        <SplitView x:Name="SideMenu" IsPaneOpen="false" DisplayMode="CompactInline" OpenPaneLength="200" CompactPaneLength="50" PaneBackground="#FFFFF387" Grid.RowSpan="2">
             <SplitView.Pane>
                 <Grid Width="{Binding}"  HorizontalAlignment="Left">
                     <Grid.RowDefinitions>
@@ -69,7 +70,6 @@
                             </Grid>
                         </Button>
 
-
                         <Button Grid.Row="2" Name="ProgrammesButton" Style="{StaticResource ButtonStyle}" Click="ProgrammesButton_Click">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -82,21 +82,20 @@
                             </Grid>
                         </Button>
 
-
-                        <Button Grid.Row="4"   Style="{StaticResource ButtonStyle}" VerticalAlignment="Stretch" Click="AddStudentsButton_Click" Name="AddStudentsButton">
+                        <Button Grid.Row="4" Name="addProg" Style="{StaticResource ButtonStyle}" Click="addProg_Click">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition  Width="50"></ColumnDefinition>
                                     <ColumnDefinition Width="150"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <FontIcon Grid.Column="0" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8FA;"></FontIcon>
-                                <TextBlock Grid.Column="1" Text="Add Student" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <!--<FontIcon Grid.Column="0"  FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE82D;"></FontIcon>-->
+                                <SymbolIcon Symbol="MoveToFolder" Grid.Column="0" />
+                                <TextBlock Grid.Column="1" Text="Add Program" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center">
                                 </TextBlock>
                             </Grid>
                         </Button>
-
-
-                        <Button Grid.Row="3"  Style="{StaticResource ButtonStyle}" Click="StudentsButton_Click" Name="StudentsButton">
+                        
+                        <Button Grid.Row="5"  Style="{StaticResource ButtonStyle}" Click="StudentsButton_Click" Name="StudentsButton">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition  Width="50"></ColumnDefinition>
@@ -111,7 +110,20 @@
                             </Grid>
                         </Button>
 
+                        <Button Grid.Row="6"   Style="{StaticResource ButtonStyle}" VerticalAlignment="Stretch" Click="AddStudentsButton_Click" Name="AddStudentsButton">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition  Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="150"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <FontIcon Grid.Column="0" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8FA;"></FontIcon>
+                                <TextBlock Grid.Column="1" Text="Add Student" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                </TextBlock>
+                            </Grid>
+                        </Button>
+
                     </Grid>
+
                     <Grid MaxHeight="50" Grid.Row="1" VerticalAlignment="Bottom">
                         <Button  Style="{StaticResource ButtonStyle}" Click="CampusesButton_Click" Name="CampusesButton">
                             <Grid>

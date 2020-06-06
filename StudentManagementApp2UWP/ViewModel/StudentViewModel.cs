@@ -60,14 +60,6 @@ namespace StudentManagementApp2UWP.ViewModel
                 OnPropertyChanged(nameof(SelectedStudent));
             }
         }
-        public void DeleteStudent()
-        {
-            int id = SelectedStudent.Student_Id;
-            studentCatalogSingleton.RemoveStudent(id);
-            OnPropertyChanged(nameof(Count));
-            OnPropertyChanged(nameof(SelectedStudent));
-            OnPropertyChanged(nameof(FilteredStudents));
-        }
 
         public int Count
         {
@@ -84,7 +76,7 @@ namespace StudentManagementApp2UWP.ViewModel
             _selectedStudent = new Student();
         }
 
-        //'''''''''''''''''''''''''''''''''''''''''''' AddStudent Method incl. fields ''''''''''''''''''''''''''''''
+        //'''''''''''''''''''''''''''''''''''''''''''' AddStudent and Delete Method incl. fields ''''''''''''''''''''''''''''''
         public void AddStudent()
         {
             Student sp = new Student();
@@ -96,7 +88,15 @@ namespace StudentManagementApp2UWP.ViewModel
             studentCatalogSingleton.NewStudent(sp);
             OnPropertyChanged(nameof(Count));
         }
-
+        
+        public void DeleteStudent()
+        {
+            int id = SelectedStudent.Student_Id;
+            studentCatalogSingleton.RemoveStudent(id);
+            OnPropertyChanged(nameof(Count));
+            OnPropertyChanged(nameof(SelectedStudent));
+            OnPropertyChanged(nameof(FilteredStudents));
+        }
 
         //'''''''''''''''''''''''''''''''''''''''''''' CODE FOR SEARCH STUDENTS ''''''''''''''''''''''''''''''''''''''''''''
         private string _searchByName;

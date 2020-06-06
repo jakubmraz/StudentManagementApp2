@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Popups;
 using StudentManagementApp2UWP.Percistency;
 using StudentManagementApp2WebAPI;
 
@@ -14,11 +15,13 @@ namespace StudentManagementApp2UWP.Model
         private StudentManagementDBAccess<Programme> programmeDbAccess = new StudentManagementDBAccess<Programme>("api/Programmes/");
        //private StudentWebAPIAsync<Programme> programmeDbAccess = new StudentWebAPIAsync<Programme>("api/Programmes/");
 
+       private ObservableCollection<Programme> _programsCollection;
+
         private static ProgrammeCatalogSingleton _instance = null;
 
         public ProgrammeCatalogSingleton()
         {
-            LoadFromDB();
+           LoadFromDB();
             //Programme studentProgramme = new Programme("This one has students", new DateTime(2018, 9, 1), new DateTime(2020, 1, 1));
 
             //Student newStudent = new Student(00, "Bob Bobby", "bob0000@edu.easj.dk", "Computer Science");
@@ -28,6 +31,9 @@ namespace StudentManagementApp2UWP.Model
             //studentProgramme.TempStudents.Add(newStudent);
             //studentProgramme.TempStudents.Add(newStudent2);
             //Programmes.Add(studentProgramme);
+
+
+            _programsCollection = new ObservableCollection<Programme>();
         }
 
         public static ProgrammeCatalogSingleton Instance
@@ -44,9 +50,9 @@ namespace StudentManagementApp2UWP.Model
 
         public ObservableCollection<Programme> Programmes { get; } = new ObservableCollection<Programme>()
         {
-            new Programme("AP Computer Science", new DateTime(2019, 9,1), new DateTime(2022, 1, 1)),
-            new Programme("AP Multimedia Design", new DateTime(2018, 9,1), new DateTime(2021, 1, 1)),
-            new Programme("AP Economics", new DateTime(2019, 2,1), new DateTime(2021, 6, 1))
+            new Programme(1,"AP Computer Science", new DateTime(2019, 9,1), new DateTime(2022, 1, 1)),
+            new Programme(2,"AP Multimedia Design", new DateTime(2018, 9,1), new DateTime(2021, 1, 1)),
+            new Programme(3,"AP Economics", new DateTime(2019, 2,1), new DateTime(2021, 6, 1))
         };
 
         public async void LoadFromDB()
@@ -65,6 +71,34 @@ namespace StudentManagementApp2UWP.Model
             }
         }
 
-        
+
+        //'''''''''''''''''''''''''''''''''''' Add and Delete Program - Elvis '''''''''''''''''''''''''
+
+        private static string _url = "api/Programmes/";
+
+        public ObservableCollection<Programme> Pro
+        {
+            get { return _programsCollection;}
+        }
+
+        public void NewProgram(Programme p)
+        {
+            StudentWebAPIAsync<Programme> newProgramAsync = new StudentWebAPIAsync<Programme>(_url);
+            newProgramAsync.CreateNewOne(p);
+            Programmes.Add(p); 
+            POP();
+        }
+
+        public void RemoveProgram(int id)
+        {
+            StudentWebAPIAsync<Programme> delProgram = new StudentWebAPIAsync<Programme>(_url);
+            delProgram.DeleteOne(id);
+            _programsCollection.Remove(Pro.FirstOrDefault(d=>d.Programme_Id==id));
+        }
+        private  void POP()
+        {
+            var message = new MessageDialog("Program Added to the list by Admin, thank you");
+            message.ShowAsync();
+        }
     }
 }

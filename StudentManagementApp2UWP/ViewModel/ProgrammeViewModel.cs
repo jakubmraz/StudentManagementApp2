@@ -6,8 +6,10 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using StudentManagementApp2UWP.Common;
 using StudentManagementApp2UWP.Model;
+using StudentManagementApp2UWP.Percistency;
 using StudentManagementApp2WebAPI;
 
 namespace StudentManagementApp2UWP.ViewModel
@@ -15,7 +17,7 @@ namespace StudentManagementApp2UWP.ViewModel
     class ProgrammeViewModel : INotifyPropertyChanged
     {
         private ProgrammeCatalogSingleton programmeCatalog;
-
+        private ProgrammeCatalogSingleton programmeCatalogSingleton { get; set; }
         private ObservableCollection<Programme> _programmes;
 
         private string _searchText;
@@ -29,8 +31,16 @@ namespace StudentManagementApp2UWP.ViewModel
         public ProgrammeViewModel()
         {
             programmeCatalog = ProgrammeCatalogSingleton.Instance;
-
             Programmes = programmeCatalog.Programmes;
+
+
+            //''''''''''''
+            programmeCatalogSingleton = ProgrammeCatalogSingleton.Instance;
+            _createProgramCommand= new RelayCommand(AddProgram);
+            DeleteProgramCommand = new RelayCommand(DeleteProgram);
+            SelectedProgramme = new Programme();
+
+
         }
 
         public ObservableCollection<Programme> Programmes
@@ -214,6 +224,64 @@ namespace StudentManagementApp2UWP.ViewModel
                 Programmes = programmeCatalog.Programmes;
             }
         }
+
+
+
+
+        //'''''''''''''''''''''''''''''''''''''''' Add and Delete Programs - Elvis ''''''''''''''''''''''''''''
+        
+        private ICommand _createProgramCommand;
+        private ICommand _deleteProgramCommand;
+        
+        public int Program_Id { get; set; }
+        public string Name { get; set; }
+        public DateTime Year_Of_Beginning { get; set; }
+        public DateTime Year_Of_End { get; set; }
+
+       
+
+        public ICommand CreateProgramCommand
+        {
+            get { return _createProgramCommand; }
+            set
+            {
+                _createProgramCommand = value;
+                OnPropertyChanged(nameof(Programmes));
+            }
+        }
+
+        public ICommand DeleteProgramCommand
+        {
+            get { return _deleteProgramCommand; }
+            set
+            {
+                _deleteProgramCommand = value;
+                OnPropertyChanged(nameof(Programmes));
+                OnPropertyChanged(nameof(SelectedProgramme));
+            }
+        }
+
+        public void AddProgram()
+        {
+            Programme pp = new Programme();
+            pp.Programme_Id = Program_Id;
+            pp.Name = Name;
+            pp.Year_Of_Beginning = Year_Of_Beginning;
+            pp.Year_Of_End = Year_Of_End;
+
+            programmeCatalogSingleton.NewProgram(pp);
+            OnPropertyChanged(nameof(Programmes));
+        }
+
+        public void DeleteProgram()
+        {
+            int id = SelectedProgramme.Programme_Id;
+            programmeCatalogSingleton.RemoveProgram(id);
+            OnPropertyChanged(nameof(SelectedProgramme));
+            OnPropertyChanged(nameof(Programmes));
+        }
+
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
