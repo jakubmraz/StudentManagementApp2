@@ -26,12 +26,20 @@ namespace StudentManagementApp2UWP.View
         public MenuBar()
         {
             this.InitializeComponent();
-            //.Navigate(typeof(CampusListPage));
+            ContentFrame.Navigate(typeof(HomePage));
         }
 
         private void Pane_Click(object sender, RoutedEventArgs e)
         {
             SideMenu.IsPaneOpen = !SideMenu.IsPaneOpen;
+        }
+
+        private void Home_Click(object sender, RoutedEventArgs e)
+        {
+            SideMenu.IsPaneOpen = !SideMenu.IsPaneOpen;
+            ContentFrame.Navigate(typeof(HomePage));
+            ResetFontWeights();
+            addProg.FontWeight = FontWeights.Bold;
         }
 
         private void ProgrammesButton_Click(object sender, RoutedEventArgs e)
@@ -40,6 +48,14 @@ namespace StudentManagementApp2UWP.View
             ContentFrame.Navigate(typeof(ProgrammeListPage));
             ResetFontWeights();
             ProgrammesButton.FontWeight = FontWeights.Bold;
+        }
+
+        private void addProg_Click(object sender, RoutedEventArgs e)
+        {
+            SideMenu.IsPaneOpen = !SideMenu.IsPaneOpen;
+            ContentFrame.Navigate(typeof(CreatePrograms));
+            ResetFontWeights();
+            addProg.FontWeight = FontWeights.Bold;
         }
 
         private void StudentsButton_Click(object sender, RoutedEventArgs e)
@@ -72,14 +88,11 @@ namespace StudentManagementApp2UWP.View
             CampusesButton.FontWeight = FontWeights.Normal;
             StudentsButton.FontWeight = FontWeights.Normal;
             AddStudentsButton.FontWeight = FontWeights.Normal;
+            addProg.FontWeight = FontWeights.Normal;
         }
 
-        private void addProg_Click(object sender, RoutedEventArgs e)
-        {
-            SideMenu.IsPaneOpen = !SideMenu.IsPaneOpen;
-            ContentFrame.Navigate(typeof(CreatePrograms));
-            ResetFontWeights();
-            addProg.FontWeight = FontWeights.Bold;
-        }
+        
+
+       
     }
 }

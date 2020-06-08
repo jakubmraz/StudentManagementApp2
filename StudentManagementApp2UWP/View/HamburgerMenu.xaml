@@ -17,7 +17,7 @@
     </Page.Resources>
 
     <Grid>
-        <TextBlock Text="Hello, User" FontSize="40" Margin="200,10,0,0" ></TextBlock>
+       
         <SplitView
             x:Name="SplitView"
             DisplayMode="Inline"

@@ -26,6 +26,7 @@ namespace StudentManagementApp2UWP.View
         public HamburgerMenu()
         {
             this.InitializeComponent();
+            ContentFrame.Navigate(typeof(UserHomePage));
         }
 
         private void CampusesButton_Click(object sender, RoutedEventArgs e)
