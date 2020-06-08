@@ -123,6 +123,7 @@
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\StaticObjects.cs" />
     <Compile Include="Model\ConnectStudentsAndProgrammes.cs" />
+    <Compile Include="Model\ReportWriter.cs" />
     <Compile Include="Model\StudentProgrammeSingleton.cs" />
     <Compile Include="Percistency\StudentWebAPIAsync.cs" />
     <Compile Include="View\CampusListPage.xaml.cs">

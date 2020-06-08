@@ -8,9 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Windows.ApplicationModel.Appointments.AppointmentsProvider;
+using Windows.Storage;
+using Windows.Storage.Pickers;
 using StudentManagementApp2UWP.Common;
 using StudentManagementApp2UWP.Model;
 using StudentManagementApp2WebAPI;
+
 
 namespace StudentManagementApp2UWP.ViewModel
 {
@@ -48,6 +51,7 @@ namespace StudentManagementApp2UWP.ViewModel
             OpenPopupCommand = new RelayCommand(OpenPopup);
             ClosePopupCommand = new RelayCommand(ClosePopup);
             AddStudentCommand = new RelayCommand(AddStudentToProgramme);
+            SaveReportCommand = new RelayCommand(SaveReport);
 
             _selectedStudent = null;
 
@@ -92,6 +96,7 @@ namespace StudentManagementApp2UWP.ViewModel
         public ICommand OpenPopupCommand { get; set; }
         public ICommand ClosePopupCommand { get; set; }
         public ICommand AddStudentCommand { get; set; }
+        public ICommand SaveReportCommand { get; set; }
 
         public Student SelectedStudent
         {
@@ -120,6 +125,22 @@ namespace StudentManagementApp2UWP.ViewModel
             {
                 _popupOpen = value;
                 OnPropertyChanged();
+            }
+        }
+
+        public async void SaveReport()
+        {
+            ReportWriter reportWriter = new ReportWriter();
+            FileSavePicker fileSavePicker = new FileSavePicker();
+
+            fileSavePicker.SuggestedStartLocation = PickerLocationId.Desktop;
+            fileSavePicker.FileTypeChoices.Add("Plain Text", new List<string>() { ".txt" });
+            fileSavePicker.SuggestedFileName = "New Report";
+
+            StorageFile file = await fileSavePicker.PickSaveFileAsync();
+            if (file != null)
+            {
+                reportWriter.GenerateReportProgramme(ThisProgramme, file);
             }
         }
 

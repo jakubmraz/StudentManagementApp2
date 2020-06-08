@@ -66,6 +66,7 @@
             </ListView.ItemTemplate>
         </ListView>
         <Button VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="40,0,0,20" Content="Add Student" FontSize="30" Background="#FFFFF387" Command="{Binding OpenPopupCommand}"/>
+        <Button VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="260,0,0,20" Content="Save Report to File" FontSize="30" Background="#FFFFF387" Command="{Binding SaveReportCommand}"/>
         <Popup Margin="200,200,200,200" IsOpen="{Binding PopupOpen}" Height="700" Width="1400">
             <Border Background="#FFFFF387" BorderBrush="Black" BorderThickness="2">
                 <StackPanel Orientation="Vertical">
