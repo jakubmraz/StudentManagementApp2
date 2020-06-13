@@ -5,6 +5,7 @@
     xmlns:local="using:StudentManagementApp2UWP.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:system="using:System"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -25,17 +26,19 @@
             </Grid.RowDefinitions>
 
             <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Text="Program info" FontSize="24" FontWeight="Bold" Height="40" HorizontalTextAlignment="Center" TextAlignment="Center" ></TextBlock>
+                <TextBlock Text="Program info" FontSize="24" FontWeight="Bold" Height="40" HorizontalTextAlignment="Center" TextAlignment="Center"></TextBlock>
             </StackPanel>
 
             <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="Program" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="100" />
             <TextBox Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Height="32" Margin="0,0,100,0"/>
 
             <TextBlock Grid.Row="2" TextWrapping="Wrap" Text="Starting Date" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="120" />
-            <DatePicker Grid.Row="2" Grid.Column="1"  VerticalAlignment="Center" Height="32" Margin="0,0,100,0"/>
+            <DatePicker DayVisible="False"  Grid.Row="2" Grid.Column="1"  VerticalAlignment="Center" Height="32" Margin="0,0,100,0" SelectedDate="{Binding Path=Year_Of_Beginning, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
 
             <TextBlock Grid.Row="3" TextWrapping="Wrap" Text="Ending Date" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="100" />
-            <DatePicker Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Height="32" Margin="0,0,100,0" />
+            <DatePicker  DayVisible="False" Grid.Row="3"  Grid.Column="1" VerticalAlignment="Center" Height="32" Margin="0,0,100,0" SelectedDate="{Binding Path=Year_Of_End, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
 
             <StackPanel Orientation="Horizontal"  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="371,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="96" Width="336">
                 <AppBarButton Background="#9999" Command="{Binding CreateProgramCommand, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Label="Add Program" Width="138"  Height="86" Margin="10,10"/>

@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Windows.UI.Popups;
 using StudentManagementApp2UWP.Common;
 using StudentManagementApp2UWP.Model;
 using StudentManagementApp2UWP.Percistency;
@@ -40,6 +41,7 @@ namespace StudentManagementApp2UWP.ViewModel
             DeleteProgramCommand = new RelayCommand(DeleteProgram);
             SelectedProgramme = new Programme();
 
+            // date picker
 
         }
 
@@ -235,10 +237,30 @@ namespace StudentManagementApp2UWP.ViewModel
         
         public int Program_Id { get; set; }
         public string Name { get; set; }
-        public DateTime Year_Of_Beginning { get; set; }
-        public DateTime Year_Of_End { get; set; }
 
-       
+        private DateTime _year_Of_Beginning = DateTime.Today;
+        private DateTime _year_Of_End ;
+
+
+        public DateTime Year_Of_Beginning
+        {
+            get { return _year_Of_Beginning; }
+            set
+            {
+                _year_Of_Beginning = value;
+                OnPropertyChanged(nameof(Year_Of_Beginning));
+            }
+        }
+
+        public DateTime Year_Of_End
+        {
+            get { return _year_Of_End; }
+            set
+            {
+                _year_Of_End = value;
+                OnPropertyChanged(nameof(Year_Of_End));
+            }
+        }
 
         public ICommand CreateProgramCommand
         {
@@ -281,15 +303,11 @@ namespace StudentManagementApp2UWP.ViewModel
             OnPropertyChanged(nameof(Programmes));
         }
 
-
-
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-
 
     }
 }

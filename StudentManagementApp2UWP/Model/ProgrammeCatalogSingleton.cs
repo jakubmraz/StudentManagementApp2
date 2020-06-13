@@ -92,13 +92,22 @@ namespace StudentManagementApp2UWP.Model
         public void RemoveProgram(int id)
         {
             StudentWebAPIAsync<Programme> delProgram = new StudentWebAPIAsync<Programme>(_url);
-            delProgram.DeleteOne(id);
+            _ = delProgram.DeleteOne(id);
             _programsCollection.Remove(Pro.FirstOrDefault(d=>d.Programme_Id==id));
+            PopDelete();
         }
+
         private  void POP()
         {
-            var message = new MessageDialog("Program Added to the list by Admin, thank you");
+            var message = new MessageDialog("Program Added to the list by Admin");
             message.ShowAsync();
+        }
+
+        public void PopDelete()
+        {
+            Student st = new Student();
+            var message = new MessageDialog($"The selected Program deleted from db" );
+            message.ShowAsync(); 
         }
     }
 }

@@ -45,7 +45,7 @@ namespace StudentManagementApp2UWP.ViewModel
             {
                 _deleteStudentCommand = value;
                 OnPropertyChanged(nameof(SelectedStudent));
-                //OnPropertyChanged(nameof(Count));
+                OnPropertyChanged(nameof(Count));
 
             }
         }
@@ -103,10 +103,12 @@ namespace StudentManagementApp2UWP.ViewModel
 
         public string Search_By_Name
         {
-            get { return _searchByName; }
+            
+            get { return _searchByName;}
             set
             {
                 _searchByName = value;
+                //StaticObjects.stSearchByName = value;
                 OnPropertyChanged(nameof(FilteredStudents));
             }
         }
@@ -121,7 +123,7 @@ namespace StudentManagementApp2UWP.ViewModel
                 foreach (var st in myList)
                 {
                     // if the search box is not empty ,  get all students from catalog and try to search based on the first name 
-                    if (Search_By_Name != string.Empty && Search_By_Name != null)
+                    if  (Search_By_Name != string.Empty && Search_By_Name != null)
                     {
                         if (!st.Name.ToLower().Trim().StartsWith(Search_By_Name.ToLower().Trim()))
                         {

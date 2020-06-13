@@ -38,7 +38,7 @@ namespace StudentManagementApp2UWP.View
 
         private void ProgrammesButton_Click(object sender, RoutedEventArgs e)
         {
-            ContentFrame.Navigate(typeof(ProgrammeListPage));
+            ContentFrame.Navigate(typeof(UserProgrammeListPage));
             ResetFontWeights();
             ProgrammesButton.FontWeight = FontWeights.Bold;
         }

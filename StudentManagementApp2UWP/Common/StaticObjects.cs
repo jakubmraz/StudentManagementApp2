@@ -10,5 +10,6 @@ namespace StudentManagementApp2UWP.Common
     public static class StaticObjects
     {
         public static Programme StaticSelectedProgramme { get; set; }
+        public static string stSearchByName { get; set; }
     }
 }
