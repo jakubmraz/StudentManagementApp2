@@ -75,6 +75,8 @@ namespace StudentManagementApp2UWP.Model
         //'''''''''''''''''''''''''''''''''''' Add and Delete Program - Elvis '''''''''''''''''''''''''
 
         private static string _url = "api/Programmes/";
+        StudentWebAPIAsync<Programme> newProgramAsync = new StudentWebAPIAsync<Programme>(_url);
+
 
         public ObservableCollection<Programme> Pro
         {
@@ -83,7 +85,6 @@ namespace StudentManagementApp2UWP.Model
 
         public void NewProgram(Programme p)
         {
-            StudentWebAPIAsync<Programme> newProgramAsync = new StudentWebAPIAsync<Programme>(_url);
             newProgramAsync.CreateNewOne(p);
             Programmes.Add(p); 
             POP();
@@ -91,8 +92,7 @@ namespace StudentManagementApp2UWP.Model
 
         public void RemoveProgram(int id)
         {
-            StudentWebAPIAsync<Programme> delProgram = new StudentWebAPIAsync<Programme>(_url);
-            _ = delProgram.DeleteOne(id);
+            _ = newProgramAsync.DeleteOne(id);
             _programsCollection.Remove(Pro.FirstOrDefault(d=>d.Programme_Id==id));
             PopDelete();
         }
@@ -103,7 +103,7 @@ namespace StudentManagementApp2UWP.Model
             message.ShowAsync();
         }
 
-        public void PopDelete()
+        private void PopDelete()
         {
             Student st = new Student();
             var message = new MessageDialog($"The selected Program deleted from db" );

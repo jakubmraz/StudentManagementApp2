@@ -45,7 +45,8 @@ namespace StudentManagementApp2UWP
             }
             else 
             {
-                var message = new MessageDialog("Your username or password is incorrect \nPlease Try again 😊 ", "Fail Login");
+                var message = new MessageDialog("Your username or password is incorrect \nPlease Try again 😊 ", 
+                    "Fail Login");
                 message.ShowAsync();
             }
         }

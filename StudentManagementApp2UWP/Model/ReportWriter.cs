@@ -25,7 +25,7 @@ namespace StudentManagementApp2UWP.Model
 
             foreach (var student in programme.Students)
             {
-                report = report + $"{student.Name}, {student.Email}\n";
+                report += $"{student.Name}, {student.Email}\n";
             }
 
             await FileIO.WriteTextAsync(storageFile, report);

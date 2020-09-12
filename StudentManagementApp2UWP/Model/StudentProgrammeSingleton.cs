@@ -15,7 +15,7 @@ namespace StudentManagementApp2UWP.Model
 
         private static StudentProgrammeSingleton _instance = null;
 
-        public StudentProgrammeSingleton()
+        private StudentProgrammeSingleton()
         {
             LoadFromDB();
         }
